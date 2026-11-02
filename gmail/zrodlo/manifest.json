@@ -1,0 +1,30 @@
+{
+  "manifest_version": 3,
+  "name": "Szkic odpowiedzi dla kancelarii",
+  "short_name": "Szkic odpowiedzi",
+  "version": "1.0.0",
+  "description": "Podpowiada w Gmailu szkic odpowiedzi na mail od klienta z bazy gotowych wzorów. Działa lokalnie, niczego nie wysyła. Przygotowane przez ADVOSYNC.",
+  "homepage_url": "https://advosync.com",
+  "icons": {
+    "16": "icon-16.png",
+    "32": "icon-32.png",
+    "48": "icon-48.png",
+    "128": "icon-128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://mail.google.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["panel.html"],
+      "matches": ["https://mail.google.com/*"]
+    }
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'; connect-src 'self' https://ddziurzynski-advo.github.io; base-uri 'none'; form-action 'none'"
+  }
+}

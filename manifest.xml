@@ -10,11 +10,11 @@
            xmlns:mailappor="http://schemas.microsoft.com/office/mailappversionoverrides/1.0"
            xsi:type="MailApp">
   <Id>ecec544d-acc6-4d72-ab96-06cce39e2e8b</Id>
-  <Version>1.0.0.0</Version>
+  <Version>1.1.0.0</Version>
   <ProviderName>ADVOSYNC</ProviderName>
   <DefaultLocale>pl-PL</DefaultLocale>
-  <DisplayName DefaultValue="ADVOSYNC · Szkic odpowiedzi"/>
-  <Description DefaultValue="Demo asystenta kancelarii: podpowiada szkic odpowiedzi na mail od klienta. Działa lokalnie, niczego nie wysyła."/>
+  <DisplayName DefaultValue="Szkic odpowiedzi dla kancelarii"/>
+  <Description DefaultValue="Podpowiada szkic odpowiedzi na mail od klienta z bazy gotowych wzorów. Działa lokalnie, niczego nie wysyła. Przygotowane przez ADVOSYNC."/>
   <IconUrl DefaultValue="https://ddziurzynski-advo.github.io/advosync-outlook-demo/assets/icon-64.png"/>
   <HighResolutionIconUrl DefaultValue="https://ddziurzynski-advo.github.io/advosync-outlook-demo/assets/icon-128.png"/>
   <SupportUrl DefaultValue="https://advosync.com"/>

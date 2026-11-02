@@ -1,12 +1,14 @@
-# ADVOSYNC · Szkic odpowiedzi (demo dodatku do Outlooka)
+# Szkic odpowiedzi dla kancelarii (dodatek ADVOSYNC do Outlooka i Gmaila)
 
 Demo pomysłu ADVOSYNC: asystent przygotowuje szkic odpowiedzi na mail od klienta, a prawnik go sprawdza i sam wysyła.
+
+Działa w Outlooku (dodatek Office) i w Gmailu (rozszerzenie Chrome) – z tą samą bazą odpowiedzi i tym samym panelem.
 
 Prawnik otwiera mail i klika przycisk **Szkic odpowiedzi**. W panelu bocznym widzi 1–3 pasujące odpowiedzi z bazy 20 gotowych tekstów, z informacją, co zostało wykryte. Po kliknięciu **Użyj** otwiera się odpowiedź ze szkicem, w którym pola do uzupełnienia mają żółte tło. Dodatek nigdy niczego nie wysyła sam.
 
 To demo do nagrań i rozmów z prawnikami, a nie gotowy produkt. Wszystkie teksty mają status „szkic – do weryfikacji przez adwokata”.
 
-- **Strona instalacji (do wysyłania prawnikom):** https://ddziurzynski-advo.github.io/advosync-outlook-demo/
+- **Strona instalacji (do wysyłania prawnikom):** https://ddziurzynski-advo.github.io/advosync-outlook-demo/ (bezpośrednio do Gmaila: …/#gmail)
 - **Testy dopasowania:** https://ddziurzynski-advo.github.io/advosync-outlook-demo/testy.html
 - **Co dodatek robi z danymi:** [DANE-I-PRYWATNOSC.md](DANE-I-PRYWATNOSC.md)
 - **Maile do nagrań:** [MAILE-DO-NAGRAN.md](MAILE-DO-NAGRAN.md)
@@ -21,11 +23,15 @@ To demo do nagrań i rozmów z prawnikami, a nie gotowy produkt. Wszystkie tekst
 | `testy.json` | fikcyjne maile i oczekiwana odpowiedź dla każdego | Tak, gdy dodajesz testy |
 | `MAILE-DO-NAGRAN.md` | 10 maili do nagrania demo | Nie, powstaje z `testy.json` |
 | `manifest.xml` | „wizytówka” dodatku dla Outlooka: nazwa, adres, uprawnienia | Tylko przy zmianie adresu (patrz niżej) |
-| `taskpane.html`, `taskpane.js`, `taskpane.css` | panel boczny | Nie |
+| `panel.js`, `taskpane.css` | wspólny panel boczny (Outlook i Gmail) | Nie |
+| `taskpane.html`, `taskpane.js` | panel w Outlooku (łącznik z Outlookiem) | Nie |
+| `gmail/szkic-odpowiedzi-gmail.zip` | rozszerzenie Chrome dla Gmaila – plik do pobrania | Nie, powstaje automatycznie (patrz „Aktualizacja”) |
+| `gmail/zrodlo/` | pliki rozszerzenia dla Gmaila (łącznik z Gmailem, manifest rozszerzenia) | Nie |
+| `gmail/zbuduj.js` | skrypt, który składa plik ZIP rozszerzenia | Nie |
 | `dopasowanie.js` | reguły dopasowania | Nie |
 | `testy.html`, `testy.js`, `testy-strona.js` | strona z testami | Nie |
 | `fonts/`, `assets/` | fonty marki i ikony | Nie |
-| `index.html`, `strona.css` | strona instalacji dla prawników (adres główny dodatku) | Tak, gdy zmieniasz teksty na stronie |
+| `index.html`, `strona.css`, `strona.js` | strona instalacji dla prawników (adres główny dodatku) | Tak, gdy zmieniasz teksty na stronie |
 | `assets/panel-przyklad.png` | zrzut panelu z fikcyjnym mailem, pokazywany na stronie instalacji | Możesz podmienić na własny zrzut |
 
 ---
@@ -44,15 +50,31 @@ Dodatek składa się z dwóch części:
 4. Przewiń na dół do sekcji **Custom Addins** („Dodatki niestandardowe”).
 5. Kliknij **Add a custom add-in**, potem **Add from File**, i wybierz `manifest.xml`.
 6. Potwierdź ostrzeżenie przyciskiem **Install**. Ostrzeżenie pojawia się, bo dodatek nie pochodzi ze sklepu Microsoftu.
-7. Otwórz dowolny mail. Na pasku nad mailem kliknij **Apps** („Aplikacje”) albo **…**, a potem **ADVOSYNC · Szkic odpowiedzi**.
+7. Otwórz dowolny mail. Na pasku nad mailem kliknij **Apps** („Aplikacje”) albo **…**, a potem **Szkic odpowiedzi dla kancelarii**.
 
 Dodatek pojawi się też w nowym Outlooku dla Windows i w Outlooku na Macu. W klasycznym Outlooku dla Windows może to potrwać do 24 godzin.
 
 **Jeśli w kroku 4 nie ma sekcji „Custom Addins”**, administrator Microsoft 365 blokuje własne dodatki. Trzeba go poprosić o włączenie roli „My Custom Apps” albo użyć prywatnego konta outlook.com.
 
+
+### Instalacja w Gmailu (rozszerzenie Chrome)
+
+Do czasu publikacji w Chrome Web Store rozszerzenie instaluje się z pliku:
+
+1. Na stronie instalacji wybierz zakładkę **Gmail** i kliknij **Pobierz dla Gmaila**.
+2. Rozpakuj plik ZIP. Na Macu wystarczy dwuklik, w Windows: prawy przycisk → **Wyodrębnij wszystkie**. Folder przenieś w stałe miejsce (np. Dokumenty) i go nie usuwaj.
+3. W Chrome wpisz w pasku adresu `chrome://extensions` (w Edge: `edge://extensions`).
+4. Włącz **Tryb dewelopera** (Developer mode).
+5. Kliknij **Załaduj rozpakowane** (Load unpacked) i wskaż rozpakowany folder.
+6. Odśwież Gmaila i otwórz mail. W prawym dolnym rogu pojawi się przycisk **Szkic odpowiedzi**.
+
+Działa w Chrome i Edge na komputerze. Nie działa w aplikacji Gmail na telefonie ani w Safari czy Firefoksie.
+
 ### Odinstalowanie
 
-Wykonaj kroki 2–4. Przy dodatku kliknij **…**, a potem **Remove**.
+**Outlook:** wykonaj kroki 2–4 instalacji. Przy dodatku kliknij **…**, a potem **Remove**.
+
+**Gmail:** na `chrome://extensions` przy rozszerzeniu kliknij **Usuń** (Remove), a potem skasuj folder.
 
 ### Hosting od zera (gdyby trzeba było go postawić jeszcze raz)
 
@@ -131,7 +153,7 @@ W `testy.json` skopiuj jeden z przypadków (np. `T01`), zmień `id`, `temat`, `t
 
 ## 3. Aktualizacja dodatku
 
-- **Zmiana treści lub słów kluczowych:** edytujesz `odpowiedzi.json` na GitHubie (patrz wyżej). Nie trzeba niczego instalować ponownie.
+- **Zmiana treści lub słów kluczowych:** edytujesz `odpowiedzi.json` na GitHubie (patrz wyżej). Nie trzeba niczego instalować ponownie – ani w Outlooku, ani w Gmailu. Rozszerzenie dla Gmaila pobiera bazę z tego samego adresu; kopię w pliku ZIP wykorzystuje tylko wtedy, gdy serwer jest niedostępny.
 - **Nowa wersja panelu** (pliki od zespołu albo od Claude):
   1. W repozytorium kliknij **Add file**, potem **Upload files**.
   2. Przeciągnij nowe pliki. Pliki o tych samych nazwach zostaną zastąpione.
@@ -142,6 +164,12 @@ W `testy.json` skopiuj jeden z przypadków (np. `T01`), zmień `id`, `temat`, `t
   2. W `manifest.xml` zamień `https://ddziurzynski-advo.github.io/advosync-outlook-demo` na nowy adres (12 miejsc).
   3. Podnieś numer w `<Version>`, np. z `1.0.0.0` na `1.0.1.0`.
   4. Każda osoba usuwa stary dodatek i instaluje nowy manifest.
+  5. Dla Gmaila zmień ten sam adres w `gmail/zrodlo/gmail-panel.js` (`ADRES_BAZY`) i w `gmail/zrodlo/manifest.json` (`connect-src`), a potem złóż nowy ZIP (niżej).
+- **Nowa wersja rozszerzenia dla Gmaila** (gdy zmienia się panel albo Gmail zmieni wygląd):
+  1. Podnieś `version` w `gmail/zrodlo/manifest.json`, np. z `1.0.0` na `1.0.1`.
+  2. W folderze `gmail` uruchom `node zbuduj.js` (to zadanie dla osoby technicznej albo dla Claude). Powstanie nowy `gmail/szkic-odpowiedzi-gmail.zip` ze wspólnymi plikami panelu.
+  3. Wgraj ZIP na GitHuba.
+  4. Każda osoba pobiera nowy ZIP, podmienia zawartość swojego folderu i na `chrome://extensions` klika ikonę odświeżenia przy rozszerzeniu.
 
 GitHub Pages przechowuje pliki w pamięci podręcznej do 10 minut. Jeśli zmiana nie jest widoczna, odczekaj chwilę i odśwież Outlooka.
 
@@ -151,15 +179,19 @@ GitHub Pages przechowuje pliki w pamięci podręcznej do 10 minut. Jeśli zmiana
 
 | Objaw | Co zrobić |
 |---|---|
-| Nie ma przycisku dodatku | Sprawdź, czy otwarty jest odebrany mail, a nie szkic. Poszukaj pod **Apps** albo **…**. W klasycznym Outlooku odczekaj do 24 h. |
+| Outlook: nie ma przycisku dodatku | Sprawdź, czy otwarty jest odebrany mail, a nie szkic. Poszukaj pod **Apps** albo **…**. W klasycznym Outlooku odczekaj do 24 h. |
 | Panel pokazuje „Nie udało się wczytać bazy odpowiedzi” | Otwórz `testy.html`, tam zobaczysz błąd w `odpowiedzi.json`. |
 | Nic nie pasuje, choć powinno | Dopisz słowo kluczowe albo podnieś jego wagę. Dodaj test z tym mailem. |
 | Pasuje zła odpowiedź | Obniż wagę słowa, które ją wywołuje, albo dodaj mu wagę ujemną. Sprawdź testy. |
+| Gmail: nie ma przycisku „Szkic odpowiedzi” | Przycisk jest tylko przy otwartej wiadomości. Odśwież Gmaila; sprawdź na `chrome://extensions`, czy rozszerzenie jest włączone, a jego folder istnieje. |
+| Gmail: „Użyj” pokazuje komunikat o przycisku „Odpowiedz” | Kliknij **Odpowiedz** w Gmailu i ponownie **Użyj**. Jeśli problem wraca u wszystkich, Gmail zmienił wygląd – rozszerzenie wymaga aktualizacji (selektory opisane na początku `gmail/zrodlo/content.js`). |
 | Żółte tło zostaje na wpisanym tekście | Tak działa edytor Outlooka. Przed wysłaniem zaznacz tekst i ustaw zakreślenie na **No color** („Brak koloru”). |
 
 ---
 
 ## 5. Co byłoby potrzebne, żeby dać dodatek prawnikom spoza zespołu
+
+Szczegółowa lista dla Microsoft Marketplace jest w osobnym folderze `publikacja-marketplace` (poza repozytorium). Dla Gmaila dochodzi **publikacja w Chrome Web Store**: konto dewelopera Google (jednorazowa opłata), opis i zrzuty, polityka prywatności obejmująca rozszerzenie, uzasadnienie uprawnienia do mail.google.com i weryfikacja przez Google. Można wybrać publikację „niepubliczną” – rozszerzenie instaluje się jednym kliknięciem z linku, ale nie widać go w wyszukiwarce sklepu.
 
 1. **Własny hosting na domenie ADVOSYNC** (np. `outlook.advosync.com`) zamiast prywatnego konta GitHub, z https i kontrolą firmy nad plikami.
 2. **Polityka prywatności i regulamin** pod stałymi adresami, podlinkowane w manifeście. Do tego ocena, przez prawnika, czy ADVOSYNC w ogóle przetwarza dane osobowe (dodatek nie przesyła treści maili, ale serwer widzi adresy IP).

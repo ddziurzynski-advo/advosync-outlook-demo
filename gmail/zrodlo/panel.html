@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <title>Szkic odpowiedzi dla kancelarii</title>
+  <link rel="stylesheet" href="taskpane.css">
+  <script src="dopasowanie.js" defer></script>
+  <script src="panel.js" defer></script>
+  <script src="gmail-panel.js" defer></script>
+</head>
+<body>
+  <main class="panel">
+    <header class="panel-head">
+      <div class="panel-gora">
+        <p class="eyebrow">Asystent kancelarii</p>
+        <button id="zamknij" class="zamknij" type="button" aria-label="Zamknij panel">Zamknij ×</button>
+      </div>
+      <h1 class="title">Szkic odpowiedzi</h1>
+      <p class="lead">Podpowiedzi z bazy odpowiedzi kancelarii. Szkic sprawdzasz i wysyłasz sam.</p>
+    </header>
+
+    <section class="card mail" aria-live="polite">
+      <p class="eyebrow">Otwarta wiadomość</p>
+      <p id="temat" class="subject">Ładowanie…</p>
+    </section>
+
+    <section id="propozycje" class="sekcja" hidden aria-live="polite">
+      <h2 class="sekcja-tytul">Najlepiej pasujące</h2>
+      <p id="brak" class="brak" hidden>Żadna odpowiedź z bazy nie pasuje wystarczająco do tej wiadomości. Wybierz ręcznie z listy poniżej.</p>
+      <ol id="lista-propozycji" class="karty"></ol>
+    </section>
+
+    <section id="wszystkie" class="sekcja" hidden>
+      <h2 class="sekcja-tytul">Wszystkie odpowiedzi</h2>
+      <div id="grupy" class="grupy"></div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    Przygotowane przez ADVOSYNC ·
+    <a href="https://advosync.com" target="_blank" rel="noopener noreferrer">advosync.com&nbsp;↗</a>
+  </footer>
+</body>
+</html>

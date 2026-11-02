@@ -7,11 +7,12 @@
   <!-- Blokada w przeglądarce: panel może pobierać dane tylko z własnego serwera (i biblioteki Microsoftu).
        Wysłanie czegokolwiek na inny adres zostałoby zablokowane, nawet przez pomyłkę w kodzie. -->
   <meta http-equiv="Content-Security-Policy" content="connect-src 'self' https://appsforoffice.microsoft.com; form-action 'none'; base-uri 'self'; object-src 'none'">
-  <title>ADVOSYNC · Szkic odpowiedzi</title>
+  <title>Szkic odpowiedzi dla kancelarii</title>
   <link rel="stylesheet" href="taskpane.css">
   <!-- Office.js: biblioteka Microsoftu, bez której żaden dodatek do Outlooka nie działa. Jedyny plik spoza naszego serwera. -->
   <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
   <script src="dopasowanie.js" defer></script>
+  <script src="panel.js" defer></script>
   <script src="taskpane.js" defer></script>
 </head>
 <body>
@@ -40,7 +41,7 @@
   </main>
 
   <footer class="foot">
-    Demo asystenta kancelarii ADVOSYNC ·
+    Przygotowane przez ADVOSYNC ·
     <a href="https://advosync.com" target="_blank" rel="noopener noreferrer">advosync.com&nbsp;↗</a>
   </footer>
 </body>

@@ -2,7 +2,7 @@
 
 Dziesięć fikcyjnych maili od klientów. Wszystkie imiona, nazwiska i dane są zmyślone.
 
-**Jak użyć:** z innego konta wyślij każdy mail na konto testowe w Outlooku. Wpisz temat i treść dokładnie jak niżej (najprościej skopiować). Potem otwórz mail i kliknij przycisk dodatku.
+**Jak użyć:** z innego konta wyślij każdy mail na konto testowe w Outlooku albo w Gmailu. Wpisz temat i treść dokładnie jak niżej (najprościej skopiować). Potem otwórz mail i kliknij przycisk dodatku.
 
 | Mail | Co pokazuje | Czego się spodziewać w panelu |
 |---|---|---|
