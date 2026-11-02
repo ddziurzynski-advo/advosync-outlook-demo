@@ -106,6 +106,19 @@ a { color: var(--text); text-underline-offset: 3px; }
   text-transform: uppercase; color: var(--caption);
 }
 
+/* Przycisk „Użyj” – pigułka jak w design systemie; w ciemnym motywie odwrócona. */
+.akcje { margin-top: 12px; }
+.btn {
+  appearance: none; border: 0; cursor: pointer;
+  padding: 8px 20px; border-radius: 999px;
+  background: var(--text); color: var(--bg);
+  font-family: var(--font-sans); font-size: 14.5px; font-weight: 600; line-height: 22px;
+  transition: opacity 160ms cubic-bezier(0.2, 0, 0, 1);
+}
+.btn:hover { opacity: 0.86; }
+.info { margin: 8px 0 0; font-size: 13px; line-height: 1.5; color: var(--text-2); }
+.info:empty { display: none; }
+
 /* Lista wszystkich odpowiedzi w grupach */
 .grupy { border-top: 1px solid var(--line); }
 .grupa { border-bottom: 1px solid var(--line); }

@@ -8,6 +8,7 @@
 
   const $ = (id) => document.getElementById(id);
   let baza = null;
+  let wOutlooku = false;
   let biezacyOdczyt = 0; // chroni przed spóźnionym wynikiem, gdy prawnik szybko przełącza maile
   const BRAK_DOMYSLNIE = $("brak").textContent;
 
@@ -28,6 +29,33 @@
     return p;
   }
 
+  function bezpieczny(tekst) {
+    return tekst.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+  }
+
+  // Szkic w HTML do okna odpowiedzi: akapity jak w Outlooku, pola do uzupełnienia na żółtym tle.
+  // Wstawiamy wyłącznie treść odpowiedzi – bez stopki, reklamy ani linku.
+  function htmlSzkicu(odpowiedz) {
+    return odpowiedz.tresc
+      .map((t) => bezpieczny(t).replace(/\[[^\]]+\]/g, (pole) => `<span style="background-color:#FCEFA1">${pole}</span>`))
+      .map((t) => `<div>${t}</div>`)
+      .join("<div><br></div>");
+  }
+
+  // Otwiera okno odpowiedzi (tylko do nadawcy) ze szkiciem. Niczego nie wysyła – wysyła prawnik.
+  function uzyj(odpowiedz, info) {
+    if (!wOutlooku) {
+      info.textContent = "Wstawianie działa wewnątrz Outlooka.";
+      return;
+    }
+    try {
+      Office.context.mailbox.item.displayReplyForm({ htmlBody: htmlSzkicu(odpowiedz) });
+      info.textContent = "Szkic otwarty w oknie odpowiedzi. Uzupełnij pola na żółto, sprawdź treść i wyślij sam.";
+    } catch (e) {
+      info.textContent = "Nie udało się otworzyć okna odpowiedzi. Spróbuj ponownie.";
+    }
+  }
+
   function karta(odpowiedz, dopasowanie) {
     const li = el("li", "karta");
     li.append(el("p", "eyebrow", `${odpowiedz.numer} · ${odpowiedz.grupa}`));
@@ -45,6 +73,16 @@
     odpowiedz.tresc.forEach((t) => szkic.append(akapit(t)));
     podglad.append(szkic, el("p", "status", odpowiedz.status));
     li.append(podglad);
+
+    const akcje = el("div", "akcje");
+    const przycisk = el("button", "btn", "Użyj");
+    przycisk.type = "button";
+    przycisk.setAttribute("aria-label", `Użyj odpowiedzi ${odpowiedz.numer}: ${odpowiedz.tytul}`);
+    const info = el("p", "info");
+    info.setAttribute("aria-live", "polite");
+    przycisk.addEventListener("click", () => uzyj(odpowiedz, info));
+    akcje.append(przycisk, info);
+    li.append(akcje);
     return li;
   }
 
@@ -117,7 +155,8 @@
     return odp.json();
   }
 
-  async function start(wOutlooku) {
+  async function start(host) {
+    wOutlooku = host;
     try {
       baza = await wczytajBaze();
     } catch (e) {
