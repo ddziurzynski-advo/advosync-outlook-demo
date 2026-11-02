@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Manifest dodatku ADVOSYNC dla Outlooka (format XML, "add-in only manifest").
+  Adres BAZA_URL zostanie podmieniony na adres Twojej strony GitHub Pages.
+  Uprawnienia: ReadItem = tylko odczyt otwartej wiadomości (najniższe możliwe dla tego dodatku).
+-->
+<OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0"
+           xmlns:mailappor="http://schemas.microsoft.com/office/mailappversionoverrides/1.0"
+           xsi:type="MailApp">
+  <Id>ecec544d-acc6-4d72-ab96-06cce39e2e8b</Id>
+  <Version>1.0.0.0</Version>
+  <ProviderName>ADVOSYNC</ProviderName>
+  <DefaultLocale>pl-PL</DefaultLocale>
+  <DisplayName DefaultValue="ADVOSYNC · Szkic odpowiedzi"/>
+  <Description DefaultValue="Demo asystenta kancelarii: podpowiada szkic odpowiedzi na mail od klienta. Działa lokalnie, niczego nie wysyła."/>
+  <IconUrl DefaultValue="BAZA_URL/assets/icon-64.png"/>
+  <HighResolutionIconUrl DefaultValue="BAZA_URL/assets/icon-128.png"/>
+  <SupportUrl DefaultValue="https://advosync.com"/>
+  <Hosts>
+    <Host Name="Mailbox"/>
+  </Hosts>
+  <Requirements>
+    <Sets>
+      <Set Name="Mailbox" MinVersion="1.3"/>
+    </Sets>
+  </Requirements>
+  <FormSettings>
+    <Form xsi:type="ItemRead">
+      <DesktopSettings>
+        <SourceLocation DefaultValue="BAZA_URL/taskpane.html"/>
+        <RequestedHeight>450</RequestedHeight>
+      </DesktopSettings>
+    </Form>
+  </FormSettings>
+  <Permissions>ReadItem</Permissions>
+  <Rule xsi:type="RuleCollection" Mode="Or">
+    <Rule xsi:type="ItemIs" ItemType="Message" FormType="Read"/>
+  </Rule>
+  <DisableEntityHighlighting>true</DisableEntityHighlighting>
+
+  <VersionOverrides xmlns="http://schemas.microsoft.com/office/mailappversionoverrides" xsi:type="VersionOverridesV1_0">
+    <Requirements>
+      <bt:Sets DefaultMinVersion="1.3">
+        <bt:Set Name="Mailbox"/>
+      </bt:Sets>
+    </Requirements>
+    <Hosts>
+      <Host xsi:type="MailHost">
+        <DesktopFormFactor>
+          <ExtensionPoint xsi:type="MessageReadCommandSurface">
+            <OfficeTab id="TabDefault">
+              <Group id="advGroup">
+                <Label resid="GroupLabel"/>
+                <Control xsi:type="Button" id="advOpenPane">
+                  <Label resid="ButtonLabel"/>
+                  <Supertip>
+                    <Title resid="ButtonLabel"/>
+                    <Description resid="ButtonTip"/>
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon16"/>
+                    <bt:Image size="32" resid="Icon32"/>
+                    <bt:Image size="80" resid="Icon80"/>
+                  </Icon>
+                  <Action xsi:type="ShowTaskpane">
+                    <SourceLocation resid="PaneUrl"/>
+                  </Action>
+                </Control>
+              </Group>
+            </OfficeTab>
+          </ExtensionPoint>
+        </DesktopFormFactor>
+      </Host>
+    </Hosts>
+    <Resources>
+      <bt:Images>
+        <bt:Image id="Icon16" DefaultValue="BAZA_URL/assets/icon-16.png"/>
+        <bt:Image id="Icon32" DefaultValue="BAZA_URL/assets/icon-32.png"/>
+        <bt:Image id="Icon80" DefaultValue="BAZA_URL/assets/icon-80.png"/>
+      </bt:Images>
+      <bt:Urls>
+        <bt:Url id="PaneUrl" DefaultValue="BAZA_URL/taskpane.html"/>
+      </bt:Urls>
+      <bt:ShortStrings>
+        <bt:String id="GroupLabel" DefaultValue="ADVOSYNC"/>
+        <bt:String id="ButtonLabel" DefaultValue="Szkic odpowiedzi"/>
+      </bt:ShortStrings>
+      <bt:LongStrings>
+        <bt:String id="ButtonTip" DefaultValue="Podpowiada gotowy szkic odpowiedzi na tę wiadomość. Szkic sprawdzasz i wysyłasz sam."/>
+      </bt:LongStrings>
+    </Resources>
+
+    <!-- Wersja dla nowszych Outlooków: panel można przypiąć, żeby został otwarty przy przechodzeniu między mailami. -->
+    <VersionOverrides xmlns="http://schemas.microsoft.com/office/mailappversionoverrides/1.1" xsi:type="VersionOverridesV1_1">
+      <Requirements>
+        <bt:Sets DefaultMinVersion="1.5">
+          <bt:Set Name="Mailbox"/>
+        </bt:Sets>
+      </Requirements>
+      <Hosts>
+        <Host xsi:type="MailHost">
+          <DesktopFormFactor>
+            <ExtensionPoint xsi:type="MessageReadCommandSurface">
+              <OfficeTab id="TabDefault">
+                <Group id="advGroup">
+                  <Label resid="GroupLabel"/>
+                  <Control xsi:type="Button" id="advOpenPane">
+                    <Label resid="ButtonLabel"/>
+                    <Supertip>
+                      <Title resid="ButtonLabel"/>
+                      <Description resid="ButtonTip"/>
+                    </Supertip>
+                    <Icon>
+                      <bt:Image size="16" resid="Icon16"/>
+                      <bt:Image size="32" resid="Icon32"/>
+                      <bt:Image size="80" resid="Icon80"/>
+                    </Icon>
+                    <Action xsi:type="ShowTaskpane">
+                      <SourceLocation resid="PaneUrl"/>
+                      <SupportsPinning>true</SupportsPinning>
+                    </Action>
+                  </Control>
+                </Group>
+              </OfficeTab>
+            </ExtensionPoint>
+          </DesktopFormFactor>
+        </Host>
+      </Hosts>
+      <Resources>
+        <bt:Images>
+          <bt:Image id="Icon16" DefaultValue="BAZA_URL/assets/icon-16.png"/>
+          <bt:Image id="Icon32" DefaultValue="BAZA_URL/assets/icon-32.png"/>
+          <bt:Image id="Icon80" DefaultValue="BAZA_URL/assets/icon-80.png"/>
+        </bt:Images>
+        <bt:Urls>
+          <bt:Url id="PaneUrl" DefaultValue="BAZA_URL/taskpane.html"/>
+        </bt:Urls>
+        <bt:ShortStrings>
+          <bt:String id="GroupLabel" DefaultValue="ADVOSYNC"/>
+          <bt:String id="ButtonLabel" DefaultValue="Szkic odpowiedzi"/>
+        </bt:ShortStrings>
+        <bt:LongStrings>
+          <bt:String id="ButtonTip" DefaultValue="Podpowiada gotowy szkic odpowiedzi na tę wiadomość. Szkic sprawdzasz i wysyłasz sam."/>
+        </bt:LongStrings>
+      </Resources>
+    </VersionOverrides>
+  </VersionOverrides>
+</OfficeApp>

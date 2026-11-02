@@ -1,0 +1,75 @@
+/* Wygląd panelu wg ADVOSYNC Design System. Kolory zmieniasz w jednym miejscu: sekcja :root poniżej. */
+
+@font-face { font-family: "Instrument Serif"; font-weight: 400; font-display: swap; src: url("fonts/InstrumentSerif-normal-latin-ext.woff2") format("woff2"); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+@font-face { font-family: "Instrument Serif"; font-weight: 400; font-display: swap; src: url("fonts/InstrumentSerif-normal-latin.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: "Schibsted Grotesk"; font-weight: 400 700; font-display: swap; src: url("fonts/SchibstedGrotesk-normal-latin-ext.woff2") format("woff2"); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+@font-face { font-family: "Schibsted Grotesk"; font-weight: 400 700; font-display: swap; src: url("fonts/SchibstedGrotesk-normal-latin.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: "Fragment Mono"; font-weight: 400; font-display: swap; src: url("fonts/FragmentMono-normal-latin-ext.woff2") format("woff2"); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+@font-face { font-family: "Fragment Mono"; font-weight: 400; font-display: swap; src: url("fonts/FragmentMono-normal-latin.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+
+:root {
+  --font-serif: "Instrument Serif", ui-serif, Georgia, "Times New Roman", serif;
+  --font-sans: "Schibsted Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono: "Fragment Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  /* Jasny motyw (domyślny) */
+  --bg: #FAFAF9;        /* paper */
+  --bg-2: #F2F1EE;      /* paper-2 */
+  --card: #FFFFFF;
+  --text: #17181A;      /* ink */
+  --text-2: #4A4B4D;    /* ink-2 */
+  --caption: #665F58;   /* ink-3 */
+  --line: #E3E1DB;
+  --line-strong: #CFCCC4;
+  --shadow: inset 0 0 0 1px var(--line), 0 20px 36px -26px rgba(23,24,26,0.24), 0 1px 0 0 rgba(23,24,26,0.04);
+}
+
+/* Ciemny motyw: gdy Outlook ma ciemne tło (data-theme ustawia taskpane.js) albo system jest w trybie ciemnym. */
+:root[data-theme="dark"] {
+  --bg: #121212; --bg-2: #1C1C1C; --card: #1C1C1C;
+  --text: #F5F4F1; --text-2: #D3D1CB; --caption: #A9A7A0;
+  --line: #333331; --line-strong: #4A4A47;
+  --shadow: inset 0 0 0 1px var(--line);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #121212; --bg-2: #1C1C1C; --card: #1C1C1C;
+    --text: #F5F4F1; --text-2: #D3D1CB; --caption: #A9A7A0;
+    --line: #333331; --line-strong: #4A4A47;
+    --shadow: inset 0 0 0 1px var(--line);
+  }
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; min-height: 100%; }
+body {
+  display: flex; flex-direction: column; min-height: 100vh;
+  background: var(--bg); color: var(--text);
+  font-family: var(--font-sans); font-size: 15px; line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--text); text-underline-offset: 3px; }
+:focus-visible { outline: 2px solid var(--text); outline-offset: 3px; }
+
+.panel { flex: 1; padding: 20px 16px 24px; }
+.panel-head { margin-bottom: 20px; }
+
+.eyebrow {
+  margin: 0 0 6px;
+  font-family: var(--font-mono); font-size: 11.5px; line-height: 1.6; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--caption);
+}
+.title {
+  margin: 0;
+  font-family: var(--font-serif); font-weight: 400; font-size: 32px; line-height: 1.1;
+  -webkit-text-stroke: 0.5px currentColor;
+}
+
+.card { background: var(--card); border-radius: 12px; box-shadow: var(--shadow); padding: 14px 16px; }
+.subject { margin: 0; font-weight: 600; overflow-wrap: anywhere; }
+
+.foot {
+  padding: 12px 16px; border-top: 1px solid var(--line);
+  font-family: var(--font-mono); font-size: 11px; line-height: 1.6; color: var(--caption);
+}
+.foot a { color: var(--caption); }
