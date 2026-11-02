@@ -6,7 +6,7 @@ Prawnik otwiera mail i klika przycisk **Szkic odpowiedzi**. W panelu bocznym wid
 
 To demo do nagrań i rozmów z prawnikami, a nie gotowy produkt. Wszystkie teksty mają status „szkic – do weryfikacji przez adwokata”.
 
-- **Adres plików:** https://ddziurzynski-advo.github.io/advosync-outlook-demo/
+- **Strona instalacji (do wysyłania prawnikom):** https://ddziurzynski-advo.github.io/advosync-outlook-demo/
 - **Testy dopasowania:** https://ddziurzynski-advo.github.io/advosync-outlook-demo/testy.html
 - **Co dodatek robi z danymi:** [DANE-I-PRYWATNOSC.md](DANE-I-PRYWATNOSC.md)
 - **Maile do nagrań:** [MAILE-DO-NAGRAN.md](MAILE-DO-NAGRAN.md)
@@ -25,7 +25,8 @@ To demo do nagrań i rozmów z prawnikami, a nie gotowy produkt. Wszystkie tekst
 | `dopasowanie.js` | reguły dopasowania | Nie |
 | `testy.html`, `testy.js`, `testy-strona.js` | strona z testami | Nie |
 | `fonts/`, `assets/` | fonty marki i ikony | Nie |
-| `index.html` | strona kontrolna „Pliki dodatku są online.” | Nie |
+| `index.html`, `strona.css` | strona instalacji dla prawników (adres główny dodatku) | Tak, gdy zmieniasz teksty na stronie |
+| `assets/panel-przyklad.png` | zrzut panelu z fikcyjnym mailem, pokazywany na stronie instalacji | Możesz podmienić na własny zrzut |
 
 ---
 

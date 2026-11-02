@@ -1,0 +1,115 @@
+/* Strona instalacji (index.html). Kolory, fonty i przyciski pochodzą z taskpane.css. */
+
+body.strona { display: block; font-size: 16px; line-height: 1.6; }
+.strona a.btn { display: inline-block; text-decoration: none; }
+
+.kontener { max-width: 1120px; margin: 0 auto; padding: 0 16px; }
+.waski { max-width: 760px; }
+@media (min-width: 620px) { .kontener { padding: 0 40px; } }
+
+/* Nagłówek strony */
+.hero { padding: 48px 0 56px; }
+.hero-siatka { display: grid; gap: 48px; align-items: center; }
+@media (min-width: 900px) {
+  .hero { padding: 80px 0 88px; }
+  .hero-siatka { grid-template-columns: 7fr 5fr; gap: 72px; }
+}
+.naglowek {
+  margin: 12px 0 20px;
+  font-family: var(--font-serif); font-weight: 400;
+  font-size: clamp(40px, 7vw, 64px); line-height: 1.06; letter-spacing: 0.005em;
+  -webkit-text-stroke: 0.5px currentColor; text-wrap: balance;
+}
+.wstep { margin: 0; max-width: 34em; font-size: 18px; line-height: 1.6; color: var(--text-2); text-wrap: pretty; }
+.cta { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 24px; margin: 32px 0 14px; }
+.btn-duzy { padding: 12px 28px; font-size: 15.5px; }
+.link-strzalka { font-weight: 600; text-underline-offset: 4px; }
+.link-strzalka:hover { text-underline-offset: 6px; }
+.uspokojenie { margin: 0; font-family: var(--font-mono); font-size: 12px; line-height: 1.6; color: var(--caption); }
+
+.hero-obraz { margin: 0; justify-self: center; width: 100%; max-width: 340px; }
+.hero-obraz img {
+  display: block; width: 100%; height: auto; border-radius: 16px;
+  aspect-ratio: 340 / 620; object-fit: cover; object-position: top;
+  box-shadow: var(--shadow), 0 40px 60px -40px rgba(23, 24, 26, 0.35);
+  -webkit-mask-image: linear-gradient(to bottom, #000 82%, transparent);
+  mask-image: linear-gradient(to bottom, #000 82%, transparent);
+}
+.hero-obraz figcaption { margin-top: 8px; text-align: center; font-family: var(--font-mono); font-size: 11.5px; color: var(--caption); }
+
+/* Sekcje */
+.sekcja-strony { padding: 64px 0; border-top: 1px solid var(--line); }
+@media (min-width: 900px) { .sekcja-strony { padding: 96px 0; } }
+.sekcja-druga { background: var(--bg-2); }
+.naglowek-2 {
+  margin: 8px 0 28px;
+  font-family: var(--font-serif); font-weight: 400;
+  font-size: clamp(30px, 5vw, 42px); line-height: 1.1;
+  -webkit-text-stroke: 0.4px currentColor; text-wrap: balance;
+}
+.sekcja-wstep { margin: -8px 0 28px; color: var(--text-2); }
+.strona h3 { margin: 0 0 6px; font-size: 17px; line-height: 1.4; font-weight: 600; }
+
+/* Jak to działa: trzy kolumny z pionowymi liniami */
+.kroki-3 { list-style: none; margin: 0; padding: 0; display: grid; border-top: 1px solid var(--line); }
+.kroki-3 li { display: flex; gap: 16px; padding: 24px 0; border-bottom: 1px solid var(--line); }
+.kroki-3 p { margin: 0; color: var(--text-2); }
+.nr { font-family: var(--font-mono); font-size: 12px; line-height: 26px; color: var(--caption); flex: none; }
+@media (min-width: 820px) {
+  .kroki-3 { grid-template-columns: repeat(3, 1fr); border-top: 0; }
+  .kroki-3 li { flex-direction: column; gap: 12px; padding: 0 28px; border-bottom: 0; border-left: 1px solid var(--line); }
+  .kroki-3 li:first-child { padding-left: 0; border-left: 0; }
+}
+
+/* Instrukcja instalacji: numerowane kroki rozdzielone liniami */
+.instrukcja { list-style: none; margin: 0; padding: 0; counter-reset: krok; border-top: 1px solid var(--line-strong); }
+.instrukcja li { counter-increment: krok; position: relative; padding: 22px 0 22px 52px; border-bottom: 1px solid var(--line-strong); }
+.instrukcja li::before {
+  content: counter(krok, decimal-leading-zero);
+  position: absolute; left: 0; top: 24px;
+  font-family: var(--font-mono); font-size: 12px; color: var(--caption);
+}
+.instrukcja p { margin: 6px 0 0; color: var(--text-2); }
+.instrukcja strong { color: var(--text); font-weight: 600; }
+.en { font-size: 13.5px; color: var(--caption); }
+.strona code { font-family: var(--font-mono); font-size: 13px; padding: 1px 6px; border-radius: 6px; background: var(--card); box-shadow: inset 0 0 0 1px var(--line); }
+.przypis { margin: 20px 0 0; font-size: 14px; color: var(--caption); }
+
+/* Ciemny pas o danych */
+.pas-ciemny { padding: 72px 0; background: #121212; color: #F5F4F1; }
+@media (min-width: 900px) { .pas-ciemny { padding: 104px 0; } }
+.pas-ciemny .eyebrow { color: #A9A7A0; }
+.pas-ciemny a { color: #F5F4F1; }
+.kolumny { list-style: none; margin: 0; padding: 0; display: grid; border-top: 1px solid #333331; }
+.kolumny li { padding: 24px 0; border-bottom: 1px solid #333331; }
+.kolumny p { margin: 0; color: #A9A7A0; }
+@media (min-width: 820px) {
+  .kolumny { grid-template-columns: repeat(3, 1fr); border-top: 0; }
+  .kolumny li { padding: 0 28px; border-bottom: 0; border-left: 1px solid #333331; }
+  .kolumny li:first-child { padding-left: 0; border-left: 0; }
+}
+.przypis-ciemny { margin: 40px 0 0; font-family: var(--font-mono); font-size: 12px; line-height: 1.7; color: #A9A7A0; }
+@media (prefers-color-scheme: dark) {
+  .pas-ciemny, .stopka-strony { background: #1C1C1C; }
+}
+
+/* Pomoc: rozwijane pytania */
+.faq { border-top: 1px solid var(--line); }
+.faq details { border-bottom: 1px solid var(--line); }
+.faq summary {
+  display: flex; justify-content: space-between; gap: 16px;
+  padding: 18px 0; cursor: pointer; list-style: none; font-weight: 600;
+}
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; flex: none; width: 1em; text-align: center; }
+.faq details[open] summary::after { content: "−"; }
+.faq p, .faq ol { margin: 0; padding-bottom: 20px; color: var(--text-2); }
+.faq ol { padding-left: 20px; }
+.faq li { margin-bottom: 6px; }
+
+/* Stopka */
+.stopka-strony {
+  padding: 24px 0; background: #121212; color: #A9A7A0;
+  font-family: var(--font-mono); font-size: 11.5px; line-height: 1.6;
+}
+.stopka-strony a { color: #A9A7A0; }

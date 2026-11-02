@@ -4,18 +4,137 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="referrer" content="no-referrer">
-  <title>ADVOSYNC · Dodatek do Outlooka</title>
+  <meta name="description" content="Dodatek ADVOSYNC do Outlooka podpowiada szkic odpowiedzi na mail od klienta. Treść maili nie opuszcza Outlooka, a wysyła zawsze prawnik.">
+  <title>ADVOSYNC · Szkic odpowiedzi w Outlooku</title>
+  <link rel="icon" href="assets/icon-32.png">
   <link rel="stylesheet" href="taskpane.css">
+  <link rel="stylesheet" href="strona.css">
 </head>
-<body>
-  <main class="panel" style="max-width: 560px">
-    <p class="eyebrow">Demo · dodatek do Outlooka</p>
-    <h1 class="title">Pliki dodatku są online.</h1>
-    <p>Jeśli widzisz tę stronę, hosting działa. Sam dodatek otwiera się wewnątrz Outlooka, przyciskiem „Szkic odpowiedzi”.</p>
+<body class="strona">
+
+  <header class="hero">
+    <div class="kontener hero-siatka">
+      <div class="hero-tekst">
+        <p class="eyebrow">Dodatek do Outlooka · pilotaż</p>
+        <h1 class="naglowek">Szkic przygotowuje asystent. Wysyła prawnik.</h1>
+        <p class="wstep">Dodatek czyta otwarty mail od klienta i podpowiada gotową odpowiedź z bazy 20 wzorów: o terminach, kosztach, dokumentach i trudnych rozmowach. Prawnik uzupełnia szczegóły i sam klika „Wyślij”.</p>
+        <div class="cta">
+          <a class="btn btn-duzy" href="manifest.xml" download="ADVOSYNC-Outlook.xml">Pobierz dodatek</a>
+          <a class="link-strzalka" href="#instalacja">Jak zainstalować <span aria-hidden="true">↓</span></a>
+        </div>
+        <p class="uspokojenie">Bezpłatnie · instalacja w 2 minuty · treść maili nie opuszcza Outlooka</p>
+      </div>
+      <figure class="hero-obraz">
+        <img src="assets/panel-przyklad.png" width="340" height="800" alt="Panel dodatku w Outlooku: dla maila o fakturze podpowiada odpowiedź „Rozłożenie płatności na raty” ze szkicem, w którym pola do uzupełnienia mają żółte tło.">
+        <figcaption>Panel przy mailu od klienta (dane fikcyjne)</figcaption>
+      </figure>
+    </div>
+  </header>
+
+  <main>
+    <section class="sekcja-strony">
+      <div class="kontener">
+        <p class="eyebrow">Jak to działa</p>
+        <h2 class="naglowek-2">Trzy kroki. Decyzja zostaje u prawnika.</h2>
+        <ol class="kroki-3">
+          <li><span class="nr">01</span><div><h3>Otwórz mail od klienta</h3><p>Kliknij przycisk „Szkic odpowiedzi” nad wiadomością. Z boku otworzy się panel.</p></div></li>
+          <li><span class="nr">02</span><div><h3>Wybierz podpowiedź</h3><p>Panel pokaże 1–3 najlepiej pasujące odpowiedzi i to, co wykrył w mailu, np. „termin”, „rozprawy”. Można też przejrzeć wszystkie 20 w pięciu grupach.</p></div></li>
+          <li><span class="nr">03</span><div><h3>Uzupełnij i wyślij</h3><p>„Użyj” otwiera odpowiedź ze szkicem. Miejsca na sygnaturę, kwotę czy datę mają żółte tło. Wysłanie zawsze należy do prawnika.</p></div></li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="instalacja" class="sekcja-strony sekcja-druga">
+      <div class="kontener waski">
+        <p class="eyebrow">Instalacja · ok. 2 minuty</p>
+        <h2 class="naglowek-2">Instalacja w Outlooku</h2>
+        <p class="sekcja-wstep">Wystarczy konto Microsoft 365 albo Outlook.com i przeglądarka. Instalacja wykonana raz działa w Outlooku w przeglądarce, w nowym Outlooku dla Windows i na Macu.</p>
+
+        <ol class="instrukcja">
+          <li>
+            <h3>Pobierz plik dodatku</h3>
+            <p><a class="btn" href="manifest.xml" download="ADVOSYNC-Outlook.xml">Pobierz dodatek</a></p>
+            <p>Plik <code>ADVOSYNC-Outlook.xml</code> trafi do folderu Pobrane.</p>
+          </li>
+          <li>
+            <h3>Otwórz okno dodatków Outlooka</h3>
+            <p>Wejdź na <a href="https://aka.ms/olksideload" target="_blank" rel="noopener noreferrer">aka.ms/olksideload&nbsp;↗</a> i zaloguj się kontem pocztowym kancelarii. Otworzy się Outlook w przeglądarce, a po kilku sekundach okno <strong>Dodatki dla programu Outlook</strong> <span class="en">(Add-Ins for Outlook)</span>.</p>
+          </li>
+          <li>
+            <h3>Przejdź do własnych dodatków</h3>
+            <p>Po lewej kliknij <strong>Moje dodatki</strong> <span class="en">(My add-ins)</span> i przewiń na sam dół, do sekcji <strong>Dodatki niestandardowe</strong> <span class="en">(Custom Addins)</span>.</p>
+          </li>
+          <li>
+            <h3>Dodaj plik</h3>
+            <p>Kliknij <strong>Dodaj dodatek niestandardowy</strong> <span class="en">(Add a custom add-in)</span>, potem <strong>Dodaj z pliku</strong> <span class="en">(Add from File)</span> i wskaż pobrany plik <code>ADVOSYNC-Outlook.xml</code>.</p>
+          </li>
+          <li>
+            <h3>Potwierdź instalację</h3>
+            <p>Kliknij <strong>Zainstaluj</strong> <span class="en">(Install)</span>. Outlook wyświetli ostrzeżenie, bo dodatek nie pochodzi jeszcze ze sklepu Microsoftu. Na dysku nic się nie instaluje: dodatek to strona otwierana w panelu Outlooka.</p>
+          </li>
+          <li>
+            <h3>Gotowe – wypróbuj</h3>
+            <p>Otwórz dowolny mail. Nad wiadomością kliknij <strong>Aplikacje</strong> <span class="en">(Apps)</span> albo <strong>…</strong>, a potem <strong>ADVOSYNC · Szkic odpowiedzi</strong>. Ikonę pinezki w panelu można kliknąć, żeby panel został otwarty przy kolejnych mailach.</p>
+          </li>
+        </ol>
+
+        <p class="przypis">Klasyczny Outlook dla Windows pokazuje nowy dodatek z opóźnieniem, nawet do 24 godzin. Dodatek nie działa w aplikacji Outlook na telefonie.</p>
+      </div>
+    </section>
+
+    <section class="pas-ciemny">
+      <div class="kontener">
+        <p class="eyebrow">Tajemnica zawodowa</p>
+        <h2 class="naglowek-2">Dane klientów zostają w Outlooku.</h2>
+        <ul class="kolumny">
+          <li><h3>Widzi mało</h3><p>Tylko mail otwarty w danej chwili i tylko po kliknięciu przycisku. Temat, treść i godzinę wysłania. Bez załączników, adresów, innych maili i kalendarza.</p></li>
+          <li><h3>Działa na miejscu</h3><p>Dopasowanie odbywa się w Outlooku, na komputerze prawnika. Bez sztucznej inteligencji i zewnętrznych usług. Po zamknięciu panelu wynik znika.</p></li>
+          <li><h3>Niczego nie wysyła</h3><p>Treść maili nie trafia na żaden serwer. Brak analityki, śledzenia i zapisywania. Blokada w przeglądarce uniemożliwia panelowi łączenie się z obcymi adresami.</p></li>
+        </ul>
+        <p class="przypis-ciemny">Serwer z plikami dodatku widzi tylko to, co każda strona internetowa: adres IP, rodzaj przeglądarki i godzinę. <a href="https://github.com/ddziurzynski-advo/advosync-outlook-demo" target="_blank" rel="noopener noreferrer">Kod dodatku jest publiczny&nbsp;↗</a></p>
+      </div>
+    </section>
+
+    <section class="sekcja-strony">
+      <div class="kontener waski">
+        <p class="eyebrow">Pomoc</p>
+        <h2 class="naglowek-2">Gdy coś nie działa</h2>
+        <div class="faq">
+          <details>
+            <summary>Nie ma sekcji „Dodatki niestandardowe” albo instalacja jest zablokowana</summary>
+            <p>Administrator Microsoft 365 kancelarii wyłączył samodzielne instalowanie dodatków. Może zainstalować dodatek dla całej kancelarii – instrukcja poniżej – albo włączyć tę możliwość dla wybranych osób (rola „My Custom Apps” w Exchange).</p>
+          </details>
+          <details>
+            <summary>Instrukcja dla administratora Microsoft 365</summary>
+            <ol>
+              <li>Pobierz plik dodatku: <a href="manifest.xml" download="ADVOSYNC-Outlook.xml">ADVOSYNC-Outlook.xml</a>.</li>
+              <li>W <a href="https://admin.microsoft.com" target="_blank" rel="noopener noreferrer">centrum administracyjnym Microsoft 365&nbsp;↗</a> wybierz <strong>Settings → Integrated apps → Upload custom apps</strong>.</li>
+              <li>Jako typ wybierz <strong>Office Add-in</strong> i wgraj plik manifestu.</li>
+              <li>Wskaż użytkowników lub grupy i zatwierdź wdrożenie. Dodatek pojawi się u nich bez ostrzeżeń, zwykle w ciągu kilku godzin.</li>
+            </ol>
+          </details>
+          <details>
+            <summary>Nie widzę przycisku dodatku przy mailu</summary>
+            <p>Przycisk pojawia się przy odebranej wiadomości, nie przy pisaniu nowej. Szukaj go pod <strong>Aplikacje</strong> <span class="en">(Apps)</span> albo <strong>…</strong> nad treścią maila. W Outlooku w przeglądarce pomaga odświeżenie strony.</p>
+          </details>
+          <details>
+            <summary>Żółte tło zostaje na wpisanym tekście</summary>
+            <p>Tak działa edytor Outlooka: nowy tekst przejmuje wyróżnienie pola. Przed wysłaniem zaznacz tekst i w narzędziu zakreślania wybierz <strong>Brak koloru</strong> <span class="en">(No color)</span>.</p>
+          </details>
+          <details>
+            <summary>Jak odinstalować dodatek</summary>
+            <p>Wejdź na <a href="https://aka.ms/olksideload" target="_blank" rel="noopener noreferrer">aka.ms/olksideload&nbsp;↗</a>, wybierz <strong>Moje dodatki</strong>, przy ADVOSYNC kliknij <strong>…</strong> i <strong>Usuń</strong> <span class="en">(Remove)</span>.</p>
+          </details>
+        </div>
+      </div>
+    </section>
   </main>
-  <footer class="foot">
-    Demo asystenta kancelarii ADVOSYNC ·
-    <a href="https://advosync.com" target="_blank" rel="noopener noreferrer">advosync.com&nbsp;↗</a>
+
+  <footer class="stopka-strony">
+    <div class="kontener">
+      Demo asystenta kancelarii ADVOSYNC ·
+      <a href="https://advosync.com" target="_blank" rel="noopener noreferrer">advosync.com&nbsp;↗</a>
+    </div>
   </footer>
 </body>
 </html>
