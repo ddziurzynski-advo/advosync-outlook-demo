@@ -140,8 +140,8 @@
   }
 
   // Motyw: bierzemy kolor tła z Outlooka; jeśli Outlook go nie podaje, decyduje ustawienie systemu (CSS).
-  function ustawMotyw() {
-    const motyw = Office.context.officeTheme;
+  function ustawMotyw(zdarzenie) {
+    const motyw = (zdarzenie && zdarzenie.officeTheme) || Office.context.officeTheme;
     if (!motyw || !motyw.bodyBackgroundColor) return;
     const hex = motyw.bodyBackgroundColor.replace("#", "");
     const [r, g, b] = [0, 2, 4].map((i) => parseInt(hex.substr(i, 2), 16));
@@ -173,6 +173,12 @@
     // Przypięty panel: odśwież, gdy prawnik otworzy inny mail.
     if (Office.context.requirements.isSetSupported("Mailbox", "1.5")) {
       Office.context.mailbox.addHandlerAsync(Office.EventType.ItemChanged, analizuj);
+    }
+    // Zmiana motywu Outlooka przy otwartym panelu (nie każdy Outlook to obsługuje).
+    if (Office.EventType.OfficeThemeChanged) {
+      try {
+        Office.context.mailbox.addHandlerAsync(Office.EventType.OfficeThemeChanged, ustawMotyw);
+      } catch (e) { /* brak obsługi – motyw ustawi się przy kolejnym otwarciu panelu */ }
     }
   }
 

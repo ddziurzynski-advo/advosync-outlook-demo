@@ -4,6 +4,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="referrer" content="no-referrer">
+  <!-- Blokada w przeglądarce: panel może pobierać dane tylko z własnego serwera (i biblioteki Microsoftu).
+       Wysłanie czegokolwiek na inny adres zostałoby zablokowane, nawet przez pomyłkę w kodzie. -->
+  <meta http-equiv="Content-Security-Policy" content="connect-src 'self' https://appsforoffice.microsoft.com; form-action 'none'; base-uri 'self'; object-src 'none'">
   <title>ADVOSYNC · Szkic odpowiedzi</title>
   <link rel="stylesheet" href="taskpane.css">
   <!-- Office.js: biblioteka Microsoftu, bez której żaden dodatek do Outlooka nie działa. Jedyny plik spoza naszego serwera. -->
@@ -16,6 +19,7 @@
     <header class="panel-head">
       <p class="eyebrow">Asystent kancelarii</p>
       <h1 class="title">Szkic odpowiedzi</h1>
+      <p class="lead">Podpowiedzi z bazy odpowiedzi kancelarii. Szkic sprawdzasz i wysyłasz sam.</p>
     </header>
 
     <section class="card mail" aria-live="polite">
