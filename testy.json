@@ -1,0 +1,261 @@
+{
+  "instrukcja": [
+    "Fikcyjne maile do testów dopasowania. Żadne dane nie są prawdziwe.",
+    "oczekiwana: numer odpowiedzi, która ma być pierwsza na liście; null = żadna odpowiedź nie powinna się pokazać.",
+    "nie_powinno_byc: numery odpowiedzi, które nie mogą się pojawić w podpowiedziach.",
+    "do_nagrania: true = mail z zestawu do nagrań demo (plik MAILE-DO-NAGRAN.md)."
+  ],
+  "przypadki": [
+    {
+      "id": "M01",
+      "do_nagrania": true,
+      "od": "Anna Kowalska",
+      "temat": "Re: Sprawa o zapłatę – pytanie",
+      "tresc": [
+        "Dzień dobry Pani Mecenas,",
+        "",
+        "minęły już prawie trzy miesiące od złożenia pozwu. Kiedy będzie termin rozprawy? Chciałabym wcześniej zaplanować wolne w pracy.",
+        "",
+        "Pozdrawiam",
+        "Anna Kowalska",
+        "tel. 500 000 000",
+        "",
+        "Od: Kancelaria <kancelaria@example.pl>",
+        "Wysłano: 12 sierpnia 2026 10:12",
+        "Do: Anna Kowalska",
+        "Temat: Sprawa o zapłatę",
+        "",
+        "Dzień dobry, w załączniku przesyłam fakturę zaliczkową nr 12/2026. Proszę o przelew w ciągu 7 dni."
+      ],
+      "oczekiwana": "03",
+      "nie_powinno_byc": ["06", "15"],
+      "co_sprawdza": "Termin rozprawy; cytowana wcześniejsza korespondencja (faktura) jest pomijana."
+    },
+    {
+      "id": "M02",
+      "do_nagrania": true,
+      "od": "Marek Nowak",
+      "temat": "moja sprawa",
+      "tresc": [
+        "Dzien dobry,",
+        "czy jest cos nowego w mojej sprawie? Od dawna nie mialem zadnych informacji i nie wiem, na jakim etapie jestesmy.",
+        "Marek Nowak"
+      ],
+      "oczekiwana": "01",
+      "nie_powinno_byc": [],
+      "co_sprawdza": "Pytanie o stan sprawy, napisane bez polskich znaków."
+    },
+    {
+      "id": "M03",
+      "do_nagrania": true,
+      "od": "Piotr Wiśniewski",
+      "temat": "Zapytanie o prowadzenie sprawy",
+      "tresc": [
+        "Dzień dobry,",
+        "",
+        "mam spór z firmą, która robiła u mnie remont łazienki – prace są niedokończone, a wykonawca nie odbiera telefonu. Czy podjęłaby się Pani prowadzenia takiej sprawy? Ile to będzie kosztować i czy honorarium ustala się z góry?",
+        "",
+        "Z poważaniem",
+        "Piotr Wiśniewski"
+      ],
+      "oczekiwana": "05",
+      "nie_powinno_byc": ["10"],
+      "co_sprawdza": "Pytanie o koszt przed przyjęciem sprawy."
+    },
+    {
+      "id": "M04",
+      "do_nagrania": true,
+      "od": "Katarzyna Zielińska",
+      "temat": "Faktura za październik",
+      "tresc": [
+        "Dzień dobry,",
+        "",
+        "otrzymałam fakturę, dziękuję. Mam w tym miesiącu trudniejszą sytuację finansową – czy byłaby możliwość zapłaty w dwóch ratach?",
+        "",
+        "Pozdrawiam serdecznie,",
+        "Katarzyna Zielińska"
+      ],
+      "oczekiwana": "08",
+      "nie_powinno_byc": [],
+      "co_sprawdza": "Prośba o raty; faktura może się pojawić jako druga podpowiedź."
+    },
+    {
+      "id": "M05",
+      "do_nagrania": true,
+      "od": "Tomasz Lewandowski",
+      "temat": "PILNE!!!",
+      "data": "2026-11-06T21:40",
+      "tresc": [
+        "Dzień dobry,",
+        "proszę o pilny kontakt jeszcze dziś. Dostałem pismo z sądu i nie wiem, co mam z nim zrobić.",
+        "Tomasz Lewandowski"
+      ],
+      "oczekiwana": "09",
+      "nie_powinno_byc": ["11"],
+      "co_sprawdza": "Pilny kontakt w piątek wieczorem."
+    },
+    {
+      "id": "M06",
+      "do_nagrania": true,
+      "od": "Ewa Wójcik",
+      "temat": "Spotkanie w czwartek",
+      "tresc": [
+        "Dzień dobry Panie Mecenasie,",
+        "",
+        "potwierdzam spotkanie w czwartek o 10:00. Jakie dokumenty mam przynieść? Mam umowę najmu i kilka pism od właściciela mieszkania.",
+        "",
+        "Pozdrawiam,",
+        "Ewa Wójcik"
+      ],
+      "oczekiwana": "14",
+      "nie_powinno_byc": ["11"],
+      "co_sprawdza": "Pytanie o dokumenty na umówione spotkanie (nie: prośba o spotkanie)."
+    },
+    {
+      "id": "M07",
+      "do_nagrania": true,
+      "od": "Jan Kamiński",
+      "temat": "Dokumenty do sprawy",
+      "tresc": [
+        "Dzień dobry,",
+        "w załączniku przesyłam skany umowy kredytowej i aneksu. Proszę o informację, czy wszystko doszło.",
+        "Jan Kamiński"
+      ],
+      "oczekiwana": "15",
+      "nie_powinno_byc": [],
+      "co_sprawdza": "Klient przesyła dokumenty i pyta, czy dotarły."
+    },
+    {
+      "id": "M08",
+      "do_nagrania": true,
+      "od": "Krzysztof Dąbrowski",
+      "temat": "wyrok",
+      "tresc": [
+        "Dzien dobry,",
+        "jestem bardzo rozczarowany wyrokiem. Uwazam, ze sad w ogole nie wzial pod uwage moich argumentow. Czy jest sens skladac apelacje?",
+        "Krzysztof Dabrowski"
+      ],
+      "oczekiwana": "17",
+      "nie_powinno_byc": ["18"],
+      "co_sprawdza": "Niezadowolenie z wyroku, napisane bez polskich znaków."
+    },
+    {
+      "id": "M09",
+      "do_nagrania": true,
+      "od": "Adam Mazur",
+      "temat": "Pytanie przed podpisaniem umowy",
+      "tresc": [
+        "Dzień dobry,",
+        "",
+        "zanim podpiszę umowę z kancelarią, chciałbym wiedzieć, czy może Pani zagwarantować, że wygramy tę sprawę? Nie chcę ponosić kosztów, jeśli nie ma pewności.",
+        "",
+        "Pozdrawiam",
+        "Adam Mazur"
+      ],
+      "oczekiwana": "19",
+      "nie_powinno_byc": ["16"],
+      "co_sprawdza": "Prośba o gwarancję wygranej."
+    },
+    {
+      "id": "M10",
+      "do_nagrania": true,
+      "od": "Maria Szymańska",
+      "temat": "Podziękowanie",
+      "tresc": [
+        "Dzień dobry Pani Mecenas,",
+        "",
+        "chciałam bardzo podziękować za miłą rozmowę i życzliwość. Życzę miłego dnia!",
+        "",
+        "Maria Szymańska"
+      ],
+      "oczekiwana": null,
+      "nie_powinno_byc": [],
+      "co_sprawdza": "Podziękowanie – żadna odpowiedź nie pasuje, panel pokazuje pełną listę."
+    },
+    {
+      "id": "T01",
+      "temat": "Pytanie",
+      "tresc": ["Dzień dobry, dlaczego to wszystko tak długo trwa? Pozew złożyliśmy ponad rok temu, a wciąż czekamy."],
+      "oczekiwana": "02",
+      "nie_powinno_byc": ["18"]
+    },
+    {
+      "id": "T02",
+      "temat": "Po rozprawie",
+      "tresc": ["Dzień dobry, co teraz będzie po wczorajszej rozprawie? Jakie są kolejne kroki?"],
+      "oczekiwana": "04",
+      "nie_powinno_byc": []
+    },
+    {
+      "id": "T03",
+      "temat": "Faktura",
+      "tresc": ["Dzień dobry, proszę o przesłanie faktury zaliczkowej, księgowa potrzebuje jej do końca miesiąca. Proszę też o numer konta do przelewu."],
+      "oczekiwana": "06",
+      "nie_powinno_byc": []
+    },
+    {
+      "id": "T04",
+      "temat": "Koszty",
+      "tresc": ["Dzień dobry, ile wyniosą koszty sądowe i kto je zapłaci, jeśli przegramy?"],
+      "oczekiwana": "07",
+      "nie_powinno_byc": []
+    },
+    {
+      "id": "T05",
+      "temat": "Kontakt",
+      "tresc": ["Czy mogę napisać do Pana na WhatsAppie albo dostać prywatny numer? Wieczorami łatwiej mi rozmawiać."],
+      "oczekiwana": "10",
+      "nie_powinno_byc": []
+    },
+    {
+      "id": "T06",
+      "temat": "Spotkanie",
+      "tresc": ["Czy moglibyśmy spotkać się jeszcze dzisiaj? Mogę przyjechać od ręki."],
+      "oczekiwana": "11",
+      "nie_powinno_byc": []
+    },
+    {
+      "id": "T07",
+      "temat": "Sierpień",
+      "tresc": ["Słyszałam, że w sierpniu będzie Pani na urlopie. Kto w tym czasie będzie zajmował się moją sprawą?"],
+      "oczekiwana": "12",
+      "nie_powinno_byc": []
+    },
+    {
+      "id": "T08",
+      "temat": "Dokumenty",
+      "tresc": ["Czy czegoś jeszcze brakuje? Nie pamiętam, czy wysłałem wszystkie dokumenty przed rozprawą."],
+      "oczekiwana": "13",
+      "nie_powinno_byc": []
+    },
+    {
+      "id": "T09",
+      "temat": "Pełnomocnictwo",
+      "tresc": ["Dostałem od Pani pełnomocnictwo. Czy mogę je podpisać elektronicznie, czy muszę odesłać oryginał?"],
+      "oczekiwana": "16",
+      "nie_powinno_byc": []
+    },
+    {
+      "id": "T10",
+      "temat": "Moja sprawa",
+      "tresc": ["Od tygodni nie dostaję żadnej odpowiedzi, a w sprawie nic się nie dzieje. Jestem bardzo niezadowolona z tego, jak prowadzona jest moja sprawa."],
+      "oczekiwana": "18",
+      "nie_powinno_byc": []
+    },
+    {
+      "id": "T11",
+      "temat": "Decyzja",
+      "tresc": ["Po namyśle postanowiłem zrezygnować z Pana usług i przekazać sprawę innej kancelarii. Proszę o rozliczenie i zwrot dokumentów."],
+      "oczekiwana": "20",
+      "nie_powinno_byc": []
+    },
+    {
+      "id": "T12",
+      "temat": "PROSZE O PILNY KONTAKT",
+      "data": "2026-11-04T11:00",
+      "tresc": ["Dzien dobry, prosze o pilny kontakt w sprawie terminu."],
+      "oczekiwana": "09",
+      "nie_powinno_byc": []
+    }
+  ]
+}

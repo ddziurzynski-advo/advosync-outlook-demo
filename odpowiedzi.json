@@ -1,0 +1,498 @@
+{
+  "instrukcja": [
+    "Baza odpowiedzi dodatku ADVOSYNC. Edytuj tylko tekst w cudzysłowach i liczby wag.",
+    "tresc: każdy element listy to osobny akapit maila. Pola do uzupełnienia pisz w nawiasach kwadratowych, np. [sygnatura akt] – w Outlooku dostaną żółte tło.",
+    "slowa_kluczowe: \"slowo\": waga. Gwiazdka na końcu = dowolna końcówka (rozpraw* = rozprawa, rozprawy…). Kilka słów = fraza (słowa w tej kolejności, najwyżej 2 inne słowa pomiędzy). Polskie znaki i wielkie litery nie mają znaczenia.",
+    "Wyższa waga = mocniejszy sygnał. Waga ujemna obniża wynik. Odpowiedź pokazuje się, gdy suma wag znalezionych słów osiągnie prog_trafnosci.",
+    "premia_poza_godzinami: dodatkowe punkty, gdy mail przyszedł w weekend lub poza 8:00–18:00 (liczą się tylko, jeśli znaleziono też jakieś słowo kluczowe).",
+    "Po każdej zmianie otwórz stronę testy.html i sprawdź, czy wszystkie testy są zielone."
+  ],
+  "ustawienia": {
+    "prog_trafnosci": 4,
+    "minimalny_udzial_najlepszej": 0.5,
+    "maks_podpowiedzi": 3
+  },
+  "grupy": [
+    "Stan sprawy i terminy",
+    "Pieniądze",
+    "Granice i dostępność",
+    "Dokumenty",
+    "Trudne sytuacje"
+  ],
+  "odpowiedzi": [
+    {
+      "numer": "01",
+      "grupa": "Stan sprawy i terminy",
+      "tytul": "Co się dzieje w mojej sprawie?",
+      "sytuacja": "Klient pyta o postępy, a od ostatniego kontaktu w sprawie nic się nie zmieniło.",
+      "tresc": [
+        "Dzień dobry,",
+        "dziękuję za wiadomość. Od naszego ostatniego kontaktu w sprawie [sygnatura akt] nie pojawiły się nowe pisma ani decyzje sądu. Sprawa czeka teraz na kolejną czynność sądu, co na tym etapie jest zwykłym przebiegiem postępowania. Regularnie sprawdzam jej stan i odezwę się od razu, gdy coś się zmieni.",
+        "Z poważaniem"
+      ],
+      "slowa_kluczowe": {
+        "co sie dzieje": 4,
+        "co slychac": 3,
+        "stan sprawy": 3,
+        "cos nowego": 4,
+        "na jakim etapie": 4,
+        "postep*": 3,
+        "aktualn*": 2,
+        "informacj*": 1,
+        "moj* spraw*": 1
+      },
+      "status": "szkic – do weryfikacji przez adwokata"
+    },
+    {
+      "numer": "02",
+      "grupa": "Stan sprawy i terminy",
+      "tytul": "Dlaczego to tak długo trwa?",
+      "sytuacja": "Klient pyta, czemu postępowanie się przeciąga – bez pretensji do kancelarii.",
+      "tresc": [
+        "Dzień dobry,",
+        "rozumiem, że oczekiwanie jest uciążliwe. Czas trwania postępowania zależy przede wszystkim od obciążenia sądu i kolejności spraw w wydziale, a na to nie mamy bezpośredniego wpływu. W sprawie [sygnatura akt] złożyliśmy wszystkie wymagane pisma i obecnie czekamy na [czynność sądu, np. wyznaczenie terminu]. Na bieżąco sprawdzam stan sprawy i dam znać, gdy tylko sąd podejmie kolejną czynność.",
+        "Z poważaniem"
+      ],
+      "slowa_kluczowe": {
+        "tak dlugo": 4,
+        "dlugo trwa*": 4,
+        "dlaczego": 1,
+        "przewlek*": 3,
+        "ile jeszcze": 3,
+        "od dawna": 2,
+        "wciaz": 1,
+        "ciagle": 1,
+        "czekam*": 1
+      },
+      "status": "szkic – do weryfikacji przez adwokata"
+    },
+    {
+      "numer": "03",
+      "grupa": "Stan sprawy i terminy",
+      "tytul": "Kiedy będzie termin rozprawy?",
+      "sytuacja": "Klient pyta o termin rozprawy, a sąd jeszcze go nie wyznaczył.",
+      "tresc": [
+        "Dzień dobry,",
+        "sąd nie wyznaczył jeszcze terminu rozprawy. Regularnie sprawdzam stan sprawy w Portalu Informacyjnym i dam znać, gdy tylko termin się pojawi. Jeśli w międzyczasie coś się zmieni, napiszę od razu.",
+        "Z poważaniem"
+      ],
+      "slowa_kluczowe": {
+        "termin*": 2,
+        "rozpraw*": 3,
+        "posiedzen*": 2,
+        "wyznacz*": 2,
+        "wokand*": 2,
+        "kiedy": 1,
+        "sad*": 1
+      },
+      "status": "szkic – do weryfikacji przez adwokata"
+    },
+    {
+      "numer": "04",
+      "grupa": "Stan sprawy i terminy",
+      "tytul": "Co dalej po rozprawie?",
+      "sytuacja": "Po rozprawie klient pyta, co teraz będzie i czy musi coś zrobić.",
+      "tresc": [
+        "Dzień dobry,",
+        "dziękuję za wiadomość. Kolejnym krokiem w sprawie [sygnatura akt] jest [następny krok, np. ogłoszenie wyroku albo kolejna rozprawa], wyznaczony na [data]. Do tego czasu nie są potrzebne żadne działania z [Pana/Pani] strony. Gdy tylko sąd podejmie decyzję, przekażę ją i omówię możliwe dalsze kroki.",
+        "Z poważaniem"
+      ],
+      "slowa_kluczowe": {
+        "po rozprawie": 5,
+        "co dalej": 4,
+        "co teraz": 3,
+        "kolejn* krok*": 3,
+        "nastepn* krok*": 3,
+        "dalsze kroki": 3,
+        "ogloszen*": 2,
+        "wczoraj*": 1
+      },
+      "status": "szkic – do weryfikacji przez adwokata"
+    },
+    {
+      "numer": "05",
+      "grupa": "Pieniądze",
+      "tytul": "Ile to będzie kosztować?",
+      "sytuacja": "Przyszły klient pyta o wynagrodzenie, zanim kancelaria przyjmie sprawę.",
+      "tresc": [
+        "Dzień dobry,",
+        "dziękuję za wiadomość i opis sprawy. Wysokość wynagrodzenia zależy od rodzaju sprawy, stopnia jej skomplikowania i przewidywanego nakładu pracy, dlatego przed poznaniem szczegółów nie mogę rzetelnie podać kwoty. Proponuję krótką rozmowę [data i godzina], po której przedstawię pisemną propozycję wynagrodzenia. Wskażę w niej również koszty sądowe, które mogą pojawić się niezależnie od wynagrodzenia kancelarii.",
+        "Z poważaniem"
+      ],
+      "slowa_kluczowe": {
+        "ile kosztuj*": 5,
+        "ile kosztowa*": 5,
+        "honorar*": 4,
+        "wycen*": 4,
+        "cennik*": 4,
+        "cena": 3,
+        "ceny": 3,
+        "wynagrodzen*": 3,
+        "stawk*": 3,
+        "koszt*": 2,
+        "podjel* sie": 2,
+        "podjac sie": 2,
+        "prowadzeni* spraw*": 2
+      },
+      "status": "szkic – do weryfikacji przez adwokata"
+    },
+    {
+      "numer": "06",
+      "grupa": "Pieniądze",
+      "tytul": "Faktura lub zaliczka",
+      "sytuacja": "Klient prosi o fakturę, pyta o zaliczkę, numer konta albo termin płatności.",
+      "tresc": [
+        "Dzień dobry,",
+        "dziękuję za wiadomość. W załączniku przesyłam fakturę [zaliczkową / końcową] nr [numer faktury] na kwotę [kwota], wystawioną [data]. Płatność prosimy przelać na rachunek [numer rachunku] do [termin płatności], wpisując w tytule numer faktury. W razie pytań dotyczących rozliczenia pozostaję do dyspozycji.",
+        "Z poważaniem"
+      ],
+      "slowa_kluczowe": {
+        "faktur*": 5,
+        "zaliczk*": 5,
+        "numer konta": 4,
+        "nr konta": 4,
+        "numer rachunku": 4,
+        "przelew*": 3,
+        "zaplat*": 2,
+        "platnos*": 2,
+        "wplat*": 2,
+        "rozliczen*": 2,
+        "nip": 2
+      },
+      "status": "szkic – do weryfikacji przez adwokata"
+    },
+    {
+      "numer": "07",
+      "grupa": "Pieniądze",
+      "tytul": "Koszty sądowe",
+      "sytuacja": "Klient pyta, ile wyniosą opłaty sądowe i kto ostatecznie za nie zapłaci.",
+      "tresc": [
+        "Dzień dobry,",
+        "koszty sądowe to opłaty pobierane przez sąd, odrębne od wynagrodzenia kancelarii. Na obecnym etapie sprawy wynoszą one [kwota] i obejmują [rodzaj opłaty, np. opłatę od pozwu]. O tym, kto ostatecznie poniesie koszty postępowania, rozstrzyga sąd w orzeczeniu kończącym sprawę, dlatego nie da się tego dziś przesądzić. Gdy pojawi się obowiązek kolejnej opłaty, poinformuję o tym z wyprzedzeniem.",
+        "Z poważaniem"
+      ],
+      "slowa_kluczowe": {
+        "koszt* sadow*": 6,
+        "oplat* sadow*": 6,
+        "zwrot kosztow": 4,
+        "zwolnien* od kosztow": 4,
+        "kto zaplaci": 3,
+        "kto placi": 3,
+        "kto pokry*": 3,
+        "oplat*": 2
+      },
+      "status": "szkic – do weryfikacji przez adwokata"
+    },
+    {
+      "numer": "08",
+      "grupa": "Pieniądze",
+      "tytul": "Rozłożenie płatności na raty",
+      "sytuacja": "Klient pisze, że nie zapłaci od razu całej kwoty, i prosi o raty lub odroczenie.",
+      "tresc": [
+        "Dzień dobry,",
+        "dziękuję za otwarte przedstawienie sytuacji. Możemy rozważyć rozłożenie płatności za [faktura lub etap sprawy] na [liczba rat] rat po [kwota], płatnych do [dzień] każdego miesiąca. Jeśli taki układ odpowiada, potwierdzę go krótką wiadomością, a harmonogram wpiszemy do [umowy lub aneksu]. Gdyby proponowane kwoty były zbyt wysokie, proszę o informację, jaka rata byłaby możliwa.",
+        "Z poważaniem"
+      ],
+      "slowa_kluczowe": {
+        "raty": 5,
+        "ratach": 5,
+        "ratami": 5,
+        "ratal*": 5,
+        "rata": 4,
+        "rat": 4,
+        "rozloz*": 4,
+        "nie stac": 4,
+        "odroczen*": 3,
+        "trudn* sytuacj*": 3,
+        "w czesciach": 3,
+        "finansow*": 2
+      },
+      "status": "szkic – do weryfikacji przez adwokata"
+    },
+    {
+      "numer": "09",
+      "grupa": "Granice i dostępność",
+      "tytul": "„Proszę o pilny kontakt” w piątek wieczorem",
+      "sytuacja": "Klient pisze „pilne” wieczorem albo w weekend i oczekuje natychmiastowej reakcji.",
+      "tresc": [
+        "Dzień dobry,",
+        "dziękuję za wiadomość. Odpowiadam na korespondencję w dni robocze w godzinach [godziny pracy], dlatego zajmę się sprawą w [dzień, np. poniedziałek] rano i wtedy się skontaktuję. Jeśli chodzi o termin w sprawie, który upływa wcześniej, proszę napisać, jaki to termin i kiedy mija – sprawdzę to w pierwszej kolejności.",
+        "Z poważaniem"
+      ],
+      "slowa_kluczowe": {
+        "pilny kontakt": 5,
+        "piln*": 3,
+        "jak najszybciej": 3,
+        "natychmiast*": 3,
+        "jeszcze dzis": 2,
+        "prosze o kontakt": 2,
+        "zadzwon*": 1
+      },
+      "premia_poza_godzinami": 2,
+      "status": "szkic – do weryfikacji przez adwokata"
+    },
+    {
+      "numer": "10",
+      "grupa": "Granice i dostępność",
+      "tytul": "Kontakt poza godzinami pracy",
+      "sytuacja": "Klient dzwoni wieczorami lub w weekendy, prosi o prywatny numer albo WhatsApp.",
+      "tresc": [
+        "Dzień dobry,",
+        "dziękuję za wiadomość. Aby każdą sprawę prowadzić z należytą uwagą, kontaktuję się z klientami w dni robocze w godzinach [godziny pracy] – mailowo lub pod numerem kancelarii [numer telefonu]. Wiadomości wysłane wieczorem lub w weekend czytam w najbliższy dzień roboczy. Dzięki temu cała korespondencja w sprawie jest w jednym miejscu i nic nie umyka.",
+        "Z poważaniem"
+      ],
+      "slowa_kluczowe": {
+        "whatsapp*": 5,
+        "prywatn* numer*": 5,
+        "numer prywatn*": 5,
+        "messenger*": 4,
+        "po godzinach": 4,
+        "weekend*": 3,
+        "nie odbiera*": 3,
+        "wieczor*": 2,
+        "sobot*": 2,
+        "niedziel*": 2,
+        "dzwonil*": 2,
+        "sms*": 2
+      },
+      "premia_poza_godzinami": 2,
+      "status": "szkic – do weryfikacji przez adwokata"
+    },
+    {
+      "numer": "11",
+      "grupa": "Granice i dostępność",
+      "tytul": "Prośba o spotkanie od ręki",
+      "sytuacja": "Klient chce się spotkać jeszcze dziś albo jutro rano, bez wcześniejszego umówienia.",
+      "tresc": [
+        "Dzień dobry,",
+        "dziękuję za wiadomość. Niestety w najbliższym czasie nie mam wolnego terminu na spotkanie od ręki. Mogę zaproponować spotkanie w kancelarii [data] o [godzina] albo rozmowę telefoniczną lub online [data] o [godzina]. Jeśli przed spotkaniem prześle [Pan/Pani] krótki opis sprawy i posiadane dokumenty, rozmowa będzie konkretniejsza.",
+        "Z poważaniem"
+      ],
+      "slowa_kluczowe": {
+        "spotka*": 4,
+        "od reki": 4,
+        "wizyt*": 3,
+        "dzisiaj": 2,
+        "dzis": 2,
+        "jutro": 2,
+        "umowi*": 2,
+        "przyjech*": 2,
+        "przyjad*": 2,
+        "przyjsc": 2,
+        "osobisc*": 2
+      },
+      "status": "szkic – do weryfikacji przez adwokata"
+    },
+    {
+      "numer": "12",
+      "grupa": "Granice i dostępność",
+      "tytul": "Nieobecność prawnika i zastępstwo",
+      "sytuacja": "Klient pisze w czasie urlopu prawnika albo pyta, kto zajmie się sprawą pod jego nieobecność.",
+      "tresc": [
+        "Dzień dobry,",
+        "dziękuję za wiadomość. W dniach [daty nieobecności] jestem poza biurem i mam ograniczony dostęp do poczty. Sprawy pilne, zwłaszcza związane z terminami sądowymi, prowadzi w tym czasie [imię i nazwisko zastępcy], kontakt: [e-mail lub telefon]. Pozostałymi sprawami zajmę się po powrocie, od [data powrotu].",
+        "Z poważaniem"
+      ],
+      "slowa_kluczowe": {
+        "urlop*": 5,
+        "nieobecn*": 4,
+        "zastep*": 4,
+        "zastap*": 4,
+        "poza biurem": 4,
+        "dostepn*": 2,
+        "w tym czasie": 2,
+        "wyjazd*": 2,
+        "wyjezdza*": 2
+      },
+      "status": "szkic – do weryfikacji przez adwokata"
+    },
+    {
+      "numer": "13",
+      "grupa": "Dokumenty",
+      "tytul": "Przypomnienie o brakujących dokumentach",
+      "sytuacja": "Zbliża się termin, a klient nadal nie przesłał wszystkich potrzebnych dokumentów.",
+      "tresc": [
+        "Dzień dobry,",
+        "dziękuję za wiadomość. Przypominam, że do przygotowania sprawy nadal potrzebuję: [lista brakujących dokumentów]. Aby zdążyć przed terminem [data terminu], proszę o ich przesłanie do [data]. Wystarczą czytelne skany lub zdjęcia, a oryginały proszę zachować do wglądu.",
+        "Z poważaniem"
+      ],
+      "slowa_kluczowe": {
+        "brakuj*": 4,
+        "czegos jeszcze": 3,
+        "wszystkie dokumenty": 3,
+        "dosl*": 3,
+        "dosyl*": 3,
+        "uzupelni*": 3,
+        "brak": 2,
+        "czy wszystko": 2,
+        "zapomnial*": 2
+      },
+      "status": "szkic – do weryfikacji przez adwokata"
+    },
+    {
+      "numer": "14",
+      "grupa": "Dokumenty",
+      "tytul": "Jakie dokumenty mam przynieść?",
+      "sytuacja": "Przed spotkaniem klient pyta, co ma ze sobą zabrać.",
+      "tresc": [
+        "Dzień dobry,",
+        "na spotkanie [data] proszę zabrać: [lista dokumentów]. Przydadzą się także wszystkie pisma otrzymane w tej sprawie, nawet jeśli wydają się mało istotne. Jeśli któregoś dokumentu brakuje, omówimy to na miejscu. Proszę też zabrać dokument tożsamości.",
+        "Z poważaniem"
+      ],
+      "slowa_kluczowe": {
+        "jakie dokumenty": 6,
+        "jakich dokumentow": 6,
+        "co przyni*": 5,
+        "co zabra*": 5,
+        "co przygotowa*": 4,
+        "przyni*": 3,
+        "zabra*": 2,
+        "dokument*": 2,
+        "zaswiadczen*": 2,
+        "papier*": 2
+      },
+      "status": "szkic – do weryfikacji przez adwokata"
+    },
+    {
+      "numer": "15",
+      "grupa": "Dokumenty",
+      "tytul": "Potwierdzenie otrzymania dokumentów",
+      "sytuacja": "Klient przesłał dokumenty i pyta, czy dotarły.",
+      "tresc": [
+        "Dzień dobry,",
+        "potwierdzam otrzymanie dokumentów: [lista otrzymanych dokumentów]. Dziękuję za ich przesłanie. Zapoznam się z nimi do [data] i dam znać, jeśli będzie potrzebne coś jeszcze.",
+        "Z poważaniem"
+      ],
+      "slowa_kluczowe": {
+        "zalacz*": 4,
+        "przesylam": 4,
+        "czy dotarl*": 4,
+        "czy doszl*": 4,
+        "czy otrzymal*": 4,
+        "wysylam": 3,
+        "skan*": 3
+      },
+      "status": "szkic – do weryfikacji przez adwokata"
+    },
+    {
+      "numer": "16",
+      "grupa": "Dokumenty",
+      "tytul": "Prośba o podpisanie pełnomocnictwa",
+      "sytuacja": "Klient pyta o pełnomocnictwo albo trzeba poprosić o jego podpisanie i odesłanie.",
+      "tresc": [
+        "Dzień dobry,",
+        "w załączniku przesyłam pełnomocnictwo do sprawy [sygnatura akt lub opis sprawy]. Proszę o jego podpisanie i odesłanie [sposób, np. skan mailem i oryginał pocztą] do [data]. Bez podpisanego pełnomocnictwa nie mogę reprezentować [Pana/Pani] przed sądem. Jeśli treść dokumentu budzi pytania, chętnie je wyjaśnię.",
+        "Z poważaniem"
+      ],
+      "slowa_kluczowe": {
+        "pelnomocnict*": 6,
+        "podpis*": 3,
+        "upowaznien*": 3,
+        "profil zaufany": 3,
+        "odesl*": 2,
+        "oryginal*": 2
+      },
+      "status": "szkic – do weryfikacji przez adwokata"
+    },
+    {
+      "numer": "17",
+      "grupa": "Trudne sytuacje",
+      "tytul": "Klient niezadowolony z wyroku",
+      "sytuacja": "Zapadł niekorzystny wyrok, klient jest rozczarowany i pyta o apelację.",
+      "tresc": [
+        "Dzień dobry,",
+        "rozumiem rozczarowanie tym rozstrzygnięciem. O tym, czy i na jakiej podstawie warto wyrok zaskarżyć, będzie można rzetelnie powiedzieć po analizie jego uzasadnienia. Terminy na dalsze kroki są krótkie – najbliższy upływa [data] – dlatego proponuję rozmowę [data i godzina], na której omówimy możliwości i ich koszty. Decyzja, czy składać apelację, będzie należała do [Pana/Pani].",
+        "Z poważaniem"
+      ],
+      "slowa_kluczowe": {
+        "wyrok*": 4,
+        "apelac*": 4,
+        "przegra*": 3,
+        "zaskarz*": 3,
+        "odwol*": 3,
+        "niesprawiedliw*": 3,
+        "rozczarow*": 3,
+        "orzeczen*": 2,
+        "uzasadnieni*": 2
+      },
+      "status": "szkic – do weryfikacji przez adwokata"
+    },
+    {
+      "numer": "18",
+      "grupa": "Trudne sytuacje",
+      "tytul": "Pretensje o tempo prowadzenia sprawy",
+      "sytuacja": "Klient zarzuca kancelarii, że nic się nie dzieje albo że nie dostaje odpowiedzi.",
+      "tresc": [
+        "Dzień dobry,",
+        "dziękuję za otwarte przekazanie uwag – rozumiem frustrację i traktuję ją poważnie. Od [data] w sprawie zostały wykonane następujące czynności: [lista czynności]. Kolejny krok to [najbliższa czynność], przewidziany na [data]. Proponuję krótką rozmowę [data i godzina], aby ustalić, jak często i w jakiej formie mam przekazywać informacje o sprawie.",
+        "Z poważaniem"
+      ],
+      "slowa_kluczowe": {
+        "nic nie rob*": 6,
+        "zaniedb*": 5,
+        "nic sie nie dzieje": 4,
+        "nie odpisuj*": 4,
+        "zadnej odpowiedz*": 4,
+        "bez odpowiedzi": 4,
+        "skandal*": 4,
+        "niedopuszczaln*": 4,
+        "nie odpowiada*": 3,
+        "niezadowol*": 3,
+        "od tygodni": 3,
+        "od miesiecy": 3,
+        "jak dlugo jeszcze": 3,
+        "frustr*": 3,
+        "pretensj*": 3
+      },
+      "status": "szkic – do weryfikacji przez adwokata"
+    },
+    {
+      "numer": "19",
+      "grupa": "Trudne sytuacje",
+      "tytul": "Prośba o „gwarancję wygranej”",
+      "sytuacja": "Klient chce zapewnienia, że sprawa zakończy się sukcesem.",
+      "tresc": [
+        "Dzień dobry,",
+        "rozumiem potrzebę pewności przed podjęciem decyzji. Zasady etyki zawodowej nie pozwalają mi zagwarantować wyniku sprawy – rozstrzygnięcie zależy od sądu, dowodów i stanowiska drugiej strony. Mogę natomiast rzetelnie ocenić mocne i słabe strony sprawy oraz związane z nią ryzyka. Chętnie omówię tę ocenę podczas rozmowy [data i godzina].",
+        "Z poważaniem"
+      ],
+      "slowa_kluczowe": {
+        "gwarancj*": 5,
+        "gwarantuj*": 5,
+        "zagwarant*": 5,
+        "czy wygram*": 5,
+        "na pewno wygr*": 5,
+        "szans*": 3,
+        "wygra*": 2,
+        "pewnos*": 2,
+        "procent*": 2
+      },
+      "status": "szkic – do weryfikacji przez adwokata"
+    },
+    {
+      "numer": "20",
+      "grupa": "Trudne sytuacje",
+      "tytul": "Rezygnacja z usług kancelarii",
+      "sytuacja": "Klient informuje, że rezygnuje ze współpracy lub przenosi sprawę do innej kancelarii.",
+      "tresc": [
+        "Dzień dobry,",
+        "przyjmuję informację o rezygnacji z dalszego prowadzenia sprawy i dziękuję za dotychczasową współpracę. Do [data] przygotuję rozliczenie wykonanych czynności i zwrócę dokumenty otrzymane w sprawie [sposób przekazania]. Ustalmy też, kto i kiedy zawiadomi sąd o zmianie pełnomocnika w sprawie [sygnatura akt], tak aby nie umknął żaden termin. Jeśli zdecyduje się [Pan/Pani] na nowego pełnomocnika, przekażę potrzebne informacje.",
+        "Z poważaniem"
+      ],
+      "slowa_kluczowe": {
+        "rezygn*": 6,
+        "zrezygn*": 6,
+        "zakoncz* wspolprac*": 5,
+        "wypowiad*": 4,
+        "wypowiedzen*": 4,
+        "inn* kancelari*": 4,
+        "inn* adwokat*": 4,
+        "inn* prawnik*": 4,
+        "inn* pelnomocnik*": 4,
+        "nowego pelnomocnik*": 4,
+        "zwrot dokument*": 3
+      },
+      "status": "szkic – do weryfikacji przez adwokata"
+    }
+  ]
+}

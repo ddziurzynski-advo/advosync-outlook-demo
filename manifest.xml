@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
   Manifest dodatku ADVOSYNC dla Outlooka (format XML, "add-in only manifest").
-  Adres BAZA_URL zostanie podmieniony na adres Twojej strony GitHub Pages.
+  Adres https://ddziurzynski-advo.github.io/advosync-outlook-demo zostanie podmieniony na adres Twojej strony GitHub Pages.
   Uprawnienia: ReadItem = tylko odczyt otwartej wiadomości (najniższe możliwe dla tego dodatku).
 -->
 <OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
@@ -15,8 +15,8 @@
   <DefaultLocale>pl-PL</DefaultLocale>
   <DisplayName DefaultValue="ADVOSYNC · Szkic odpowiedzi"/>
   <Description DefaultValue="Demo asystenta kancelarii: podpowiada szkic odpowiedzi na mail od klienta. Działa lokalnie, niczego nie wysyła."/>
-  <IconUrl DefaultValue="BAZA_URL/assets/icon-64.png"/>
-  <HighResolutionIconUrl DefaultValue="BAZA_URL/assets/icon-128.png"/>
+  <IconUrl DefaultValue="https://ddziurzynski-advo.github.io/advosync-outlook-demo/assets/icon-64.png"/>
+  <HighResolutionIconUrl DefaultValue="https://ddziurzynski-advo.github.io/advosync-outlook-demo/assets/icon-128.png"/>
   <SupportUrl DefaultValue="https://advosync.com"/>
   <Hosts>
     <Host Name="Mailbox"/>
@@ -29,7 +29,7 @@
   <FormSettings>
     <Form xsi:type="ItemRead">
       <DesktopSettings>
-        <SourceLocation DefaultValue="BAZA_URL/taskpane.html"/>
+        <SourceLocation DefaultValue="https://ddziurzynski-advo.github.io/advosync-outlook-demo/taskpane.html"/>
         <RequestedHeight>450</RequestedHeight>
       </DesktopSettings>
     </Form>
@@ -76,12 +76,12 @@
     </Hosts>
     <Resources>
       <bt:Images>
-        <bt:Image id="Icon16" DefaultValue="BAZA_URL/assets/icon-16.png"/>
-        <bt:Image id="Icon32" DefaultValue="BAZA_URL/assets/icon-32.png"/>
-        <bt:Image id="Icon80" DefaultValue="BAZA_URL/assets/icon-80.png"/>
+        <bt:Image id="Icon16" DefaultValue="https://ddziurzynski-advo.github.io/advosync-outlook-demo/assets/icon-16.png"/>
+        <bt:Image id="Icon32" DefaultValue="https://ddziurzynski-advo.github.io/advosync-outlook-demo/assets/icon-32.png"/>
+        <bt:Image id="Icon80" DefaultValue="https://ddziurzynski-advo.github.io/advosync-outlook-demo/assets/icon-80.png"/>
       </bt:Images>
       <bt:Urls>
-        <bt:Url id="PaneUrl" DefaultValue="BAZA_URL/taskpane.html"/>
+        <bt:Url id="PaneUrl" DefaultValue="https://ddziurzynski-advo.github.io/advosync-outlook-demo/taskpane.html"/>
       </bt:Urls>
       <bt:ShortStrings>
         <bt:String id="GroupLabel" DefaultValue="ADVOSYNC"/>
@@ -130,12 +130,12 @@
       </Hosts>
       <Resources>
         <bt:Images>
-          <bt:Image id="Icon16" DefaultValue="BAZA_URL/assets/icon-16.png"/>
-          <bt:Image id="Icon32" DefaultValue="BAZA_URL/assets/icon-32.png"/>
-          <bt:Image id="Icon80" DefaultValue="BAZA_URL/assets/icon-80.png"/>
+          <bt:Image id="Icon16" DefaultValue="https://ddziurzynski-advo.github.io/advosync-outlook-demo/assets/icon-16.png"/>
+          <bt:Image id="Icon32" DefaultValue="https://ddziurzynski-advo.github.io/advosync-outlook-demo/assets/icon-32.png"/>
+          <bt:Image id="Icon80" DefaultValue="https://ddziurzynski-advo.github.io/advosync-outlook-demo/assets/icon-80.png"/>
         </bt:Images>
         <bt:Urls>
-          <bt:Url id="PaneUrl" DefaultValue="BAZA_URL/taskpane.html"/>
+          <bt:Url id="PaneUrl" DefaultValue="https://ddziurzynski-advo.github.io/advosync-outlook-demo/taskpane.html"/>
         </bt:Urls>
         <bt:ShortStrings>
           <bt:String id="GroupLabel" DefaultValue="ADVOSYNC"/>

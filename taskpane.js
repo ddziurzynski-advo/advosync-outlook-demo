@@ -7,14 +7,98 @@
   "use strict";
 
   const $ = (id) => document.getElementById(id);
+  let baza = null;
+  let biezacyOdczyt = 0; // chroni przed spóźnionym wynikiem, gdy prawnik szybko przełącza maile
+  const BRAK_DOMYSLNIE = $("brak").textContent;
 
-  function pokazTemat() {
+  function el(tag, klasa, tekst) {
+    const e = document.createElement(tag);
+    if (klasa) e.className = klasa;
+    if (tekst !== undefined) e.textContent = tekst;
+    return e;
+  }
+
+  // Akapit szkicu z wyróżnionymi polami do uzupełnienia, np. [sygnatura akt].
+  function akapit(tekst) {
+    const p = el("p");
+    tekst.split(/(\[[^\]]+\])/).forEach((kawalek) => {
+      if (!kawalek) return;
+      p.append(/^\[.+\]$/.test(kawalek) ? el("mark", "pole", kawalek) : document.createTextNode(kawalek));
+    });
+    return p;
+  }
+
+  function karta(odpowiedz, dopasowanie) {
+    const li = el("li", "karta");
+    li.append(el("p", "eyebrow", `${odpowiedz.numer} · ${odpowiedz.grupa}`));
+    li.append(el("h3", "karta-tytul", odpowiedz.tytul));
+    li.append(el("p", "sytuacja", odpowiedz.sytuacja));
+
+    if (dopasowanie) {
+      const sygnaly = dopasowanie.wykryto.slice(0, 4).map((s) => `„${s}”`).concat(dopasowanie.kontekst);
+      li.append(el("p", "wykryto", "Wykryto: " + sygnaly.join(", ")));
+    }
+
+    const podglad = el("details", "podglad");
+    podglad.append(el("summary", null, "Podgląd szkicu"));
+    const szkic = el("div", "szkic");
+    odpowiedz.tresc.forEach((t) => szkic.append(akapit(t)));
+    podglad.append(szkic, el("p", "status", odpowiedz.status));
+    li.append(podglad);
+    return li;
+  }
+
+  function pokazWszystkie(rozwin) {
+    const kontener = $("grupy");
+    kontener.replaceChildren();
+    for (const grupa of baza.grupy) {
+      const odp = baza.odpowiedzi.filter((o) => o.grupa === grupa);
+      const det = el("details", "grupa");
+      det.open = rozwin;
+      const sum = el("summary");
+      sum.append(el("span", "grupa-nazwa", grupa), el("span", "grupa-numery", `${odp[0].numer}–${odp[odp.length - 1].numer}`));
+      det.append(sum);
+      const ol = el("ol", "karty");
+      odp.forEach((o) => ol.append(karta(o)));
+      det.append(ol);
+      kontener.append(det);
+    }
+    $("wszystkie").hidden = false;
+  }
+
+  function pokazPropozycje(wyniki) {
+    const lista = $("lista-propozycji");
+    lista.replaceChildren();
+    wyniki.forEach((w) => lista.append(karta(w.odpowiedz, w)));
+    $("brak").hidden = wyniki.length > 0;
+    $("propozycje").hidden = false;
+    pokazWszystkie(wyniki.length === 0);
+  }
+
+  function komunikat(tekst) {
+    $("temat").textContent = tekst;
+  }
+
+  function analizuj() {
     const item = Office.context.mailbox.item;
+    const nr = ++biezacyOdczyt;
+    $("propozycje").hidden = true;
+    $("brak").textContent = BRAK_DOMYSLNIE;
     if (!item) {
-      $("temat").textContent = "Otwórz wiadomość, aby zobaczyć podpowiedzi.";
+      komunikat("Otwórz wiadomość, aby zobaczyć podpowiedzi.");
       return;
     }
-    $("temat").textContent = item.subject || "(bez tematu)";
+    const temat = item.subject || "";
+    komunikat(temat || "(bez tematu)");
+    item.body.getAsync(Office.CoercionType.Text, (wynik) => {
+      if (nr !== biezacyOdczyt) return;
+      if (wynik.status !== Office.AsyncResultStatus.Succeeded) {
+        $("brak").textContent = "Nie udało się odczytać treści wiadomości. Wybierz odpowiedź ręcznie z listy poniżej.";
+        pokazPropozycje([]);
+        return;
+      }
+      pokazPropozycje(Dopasowanie.dopasuj(baza, { temat, tresc: wynik.value, data: item.dateTimeCreated }));
+    });
   }
 
   // Motyw: bierzemy kolor tła z Outlooka; jeśli Outlook go nie podaje, decyduje ustawienie systemu (CSS).
@@ -27,22 +111,35 @@
     document.documentElement.dataset.theme = jasnosc < 0.5 ? "dark" : "light";
   }
 
-  if (typeof Office === "undefined") {
-    $("temat").textContent = "Nie udało się wczytać biblioteki Office.js. Sprawdź połączenie z internetem.";
-    return;
+  async function wczytajBaze() {
+    const odp = await fetch("odpowiedzi.json", { cache: "no-cache" });
+    if (!odp.ok) throw new Error();
+    return odp.json();
   }
 
-  Office.onReady((info) => {
-    if (info.host !== Office.HostType.Outlook) {
-      $("temat").textContent = "Ten panel działa wewnątrz Outlooka.";
+  async function start(wOutlooku) {
+    try {
+      baza = await wczytajBaze();
+    } catch (e) {
+      komunikat("Nie udało się wczytać bazy odpowiedzi. Sprawdź plik odpowiedzi.json na stronie testy.html.");
+      return;
+    }
+    if (!wOutlooku) {
+      komunikat("Ten panel działa wewnątrz Outlooka. Poniżej podgląd bazy odpowiedzi.");
+      pokazWszystkie(false);
       return;
     }
     ustawMotyw();
-    pokazTemat();
-
+    analizuj();
     // Przypięty panel: odśwież, gdy prawnik otworzy inny mail.
     if (Office.context.requirements.isSetSupported("Mailbox", "1.5")) {
-      Office.context.mailbox.addHandlerAsync(Office.EventType.ItemChanged, pokazTemat);
+      Office.context.mailbox.addHandlerAsync(Office.EventType.ItemChanged, analizuj);
     }
-  });
+  }
+
+  if (typeof Office === "undefined") {
+    start(false);
+    return;
+  }
+  Office.onReady((info) => start(info.host === Office.HostType.Outlook));
 })();

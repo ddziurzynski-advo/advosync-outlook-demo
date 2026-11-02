@@ -68,6 +68,71 @@ a { color: var(--text); text-underline-offset: 3px; }
 .card { background: var(--card); border-radius: 12px; box-shadow: var(--shadow); padding: 14px 16px; }
 .subject { margin: 0; font-weight: 600; overflow-wrap: anywhere; }
 
+/* Sekcje i karty odpowiedzi */
+.sekcja { margin-top: 28px; }
+.sekcja-tytul {
+  margin: 0 0 12px;
+  font-family: var(--font-serif); font-weight: 400; font-size: 24px; line-height: 1.2;
+  -webkit-text-stroke: 0.4px currentColor;
+}
+.brak { margin: 0 0 12px; color: var(--text-2); }
+.karty { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.karta { background: var(--card); border-radius: 12px; box-shadow: var(--shadow); padding: 14px 16px; }
+.karta-tytul { margin: 0 0 4px; font-size: 16px; line-height: 1.35; font-weight: 600; }
+.sytuacja { margin: 0; font-size: 14px; line-height: 1.5; color: var(--text-2); }
+.wykryto {
+  margin: 10px 0 0; padding-top: 10px; border-top: 1px solid var(--line);
+  font-family: var(--font-mono); font-size: 11.5px; line-height: 1.6; color: var(--caption);
+}
+
+.podglad { margin-top: 10px; }
+.podglad summary, .grupa summary {
+  cursor: pointer; list-style: none;
+  font-weight: 600; font-size: 14px;
+}
+.podglad summary::-webkit-details-marker, .grupa summary::-webkit-details-marker { display: none; }
+.podglad summary::after { content: " →"; }
+.podglad[open] summary::after { content: " ↓"; }
+.szkic {
+  margin-top: 10px; padding: 12px 14px; border-radius: 6px;
+  background: var(--bg-2); font-size: 14px; line-height: 1.55;
+}
+.szkic p { margin: 0 0 8px; }
+.szkic p:last-child { margin-bottom: 0; }
+.pole { background: #FCEFA1; color: #17181A; padding: 0 2px; border-radius: 2px; }
+.status {
+  margin: 8px 0 0;
+  font-family: var(--font-mono); font-size: 11px; line-height: 1.6; letter-spacing: 0.04em;
+  text-transform: uppercase; color: var(--caption);
+}
+
+/* Lista wszystkich odpowiedzi w grupach */
+.grupy { border-top: 1px solid var(--line); }
+.grupa { border-bottom: 1px solid var(--line); }
+.grupa summary { display: flex; justify-content: space-between; gap: 8px; padding: 12px 0; }
+.grupa-numery { font-family: var(--font-mono); font-weight: 400; font-size: 11.5px; color: var(--caption); }
+.grupa[open] summary { padding-bottom: 8px; }
+.grupa .karty { padding-bottom: 14px; }
+
+/* Strona testów */
+.testy { max-width: 760px; }
+.testy .sytuacja { margin: 12px 0 20px; }
+.podsumowanie { font-weight: 600; margin: 0 0 16px; }
+.wyniki { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+.wynik { display: flex; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--line); }
+.wynik p { margin: 0; }
+.wynik-znak { font-weight: 700; width: 1em; flex: none; }
+.wynik-nazwa { font-weight: 600; font-size: 14px; }
+.wynik-szczegoly { font-family: var(--font-mono); font-size: 12px; color: var(--caption); }
+.wynik-ok .wynik-znak, .podsumowanie.wynik-ok { color: #2F6B3A; }
+.wynik-blad .wynik-znak, .podsumowanie.wynik-blad { color: #9A3B34; }
+:root[data-theme="dark"] .wynik-ok .wynik-znak, :root[data-theme="dark"] .podsumowanie.wynik-ok { color: #7FC48C; }
+:root[data-theme="dark"] .wynik-blad .wynik-znak, :root[data-theme="dark"] .podsumowanie.wynik-blad { color: #E27A70; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .wynik-ok .wynik-znak, :root:not([data-theme="light"]) .podsumowanie.wynik-ok { color: #7FC48C; }
+  :root:not([data-theme="light"]) .wynik-blad .wynik-znak, :root:not([data-theme="light"]) .podsumowanie.wynik-blad { color: #E27A70; }
+}
+
 .foot {
   padding: 12px 16px; border-top: 1px solid var(--line);
   font-family: var(--font-mono); font-size: 11px; line-height: 1.6; color: var(--caption);

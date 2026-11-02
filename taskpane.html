@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="taskpane.css">
   <!-- Office.js: biblioteka Microsoftu, bez której żaden dodatek do Outlooka nie działa. Jedyny plik spoza naszego serwera. -->
   <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
+  <script src="dopasowanie.js" defer></script>
   <script src="taskpane.js" defer></script>
 </head>
 <body>
@@ -17,9 +18,20 @@
       <h1 class="title">Szkic odpowiedzi</h1>
     </header>
 
-    <section class="card" aria-live="polite">
+    <section class="card mail" aria-live="polite">
       <p class="eyebrow">Otwarta wiadomość</p>
       <p id="temat" class="subject">Ładowanie…</p>
+    </section>
+
+    <section id="propozycje" class="sekcja" hidden aria-live="polite">
+      <h2 class="sekcja-tytul">Najlepiej pasujące</h2>
+      <p id="brak" class="brak" hidden>Żadna odpowiedź z bazy nie pasuje wystarczająco do tej wiadomości. Wybierz ręcznie z listy poniżej.</p>
+      <ol id="lista-propozycji" class="karty"></ol>
+    </section>
+
+    <section id="wszystkie" class="sekcja" hidden>
+      <h2 class="sekcja-tytul">Wszystkie odpowiedzi</h2>
+      <div id="grupy" class="grupy"></div>
     </section>
   </main>
 
